@@ -1,4 +1,4 @@
-package org.jeong.reservationinformation.reservation.domain.vo
+package org.jeong.reservationinformation.reservation.sport.domain.vo
 
 data class PublicReservationSportVo(
         val GUBUN: String,

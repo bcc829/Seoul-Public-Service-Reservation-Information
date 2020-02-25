@@ -1,4 +1,4 @@
-package org.jeong.reservationinformation.reservation.enum
+package org.jeong.reservationinformation.reservation.sport.enum
 
 enum class SportCategory {
     ALL {

@@ -14,14 +14,11 @@ class LoggingFilterConfig {
     @Bean
     fun loggingFilter(): WebFilter =
             WebFilter { exchange, chain ->
-                val request = exchange.request
                 val startTime = System.currentTimeMillis()
 
                 return@WebFilter chain.filter(exchange).doAfterTerminate {
-                    val endTime = System.currentTimeMillis()
-
                     logger.info("""
-                        {"method":${request.method},"params":"${request.queryParams}","time": ${endTime - startTime}}
+                        {"method":${exchange.request.method},"params":"${exchange.request.queryParams}","time": ${System.currentTimeMillis() - startTime}}
                     """.trimIndent())
                 }
             }

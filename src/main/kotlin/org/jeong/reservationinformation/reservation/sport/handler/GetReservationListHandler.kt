@@ -1,8 +1,8 @@
-package org.jeong.reservationinformation.reservation.handler
+package org.jeong.reservationinformation.reservation.sport.handler
 
-import org.jeong.reservationinformation.reservation.domain.vo.ReservationListResponseVo
-import org.jeong.reservationinformation.reservation.enum.SportCategory
-import org.jeong.reservationinformation.reservation.service.GetReservationService
+import org.jeong.reservationinformation.reservation.sport.domain.vo.ReservationListResponseVo
+import org.jeong.reservationinformation.reservation.sport.enum.SportCategory
+import org.jeong.reservationinformation.reservation.sport.service.GetReservationService
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.server.ServerRequest
@@ -24,7 +24,10 @@ class GetReservationListHandler(
                                     .orElseGet { SportCategory.ALL.name },
                             page = request.queryParam("page")
                                     .map { it.toInt() }
-                                    .orElseGet { 1 }
+                                    .orElseGet { 1 },
+                            size = request.queryParam("size")
+                                    .map { if(it.toInt() > 1000) 1000 else it.toInt() }
+                                    .orElseGet { 10 }
                     ), ReservationListResponseVo::class.java)
 
 }
