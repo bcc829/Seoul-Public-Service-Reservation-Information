@@ -1,6 +1,6 @@
 package org.jeong.reservationinformation.reservation.sport.service
 
-import org.jeong.reservationinformation.reservation.sport.enum.SportCategory
+import org.jeong.reservationinformation.reservation.sport.domain.enums.SportCategory
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -9,18 +9,18 @@ import reactor.test.StepVerifier
 
 @SpringBootTest
 @TestPropertySource(properties = ["api.key = sample"])
-class GetReservationServiceTest {
+class GetSportReservationServiceTest {
 
     @Autowired
-    lateinit var getReservationService: GetReservationService
+    lateinit var getSportReservationService: GetSportReservationService
 
     @Test
-    fun getReservationListWithPageCategoryAllTest() {
+    fun getReservationsWithPageCategoryAllTest() {
         val sportCategory = SportCategory.ALL
         val page = 1
         val size = 5
 
-        val reservesWithPage = getReservationService.getReservationListWithPage(
+        val reservesWithPage = getSportReservationService.getReservationsWithPage(
                 category = sportCategory.name,
                 size = size,
                 page = page
@@ -32,12 +32,12 @@ class GetReservationServiceTest {
     }
 
     @Test
-    fun getReservationListWithPageCategoryBadmintonCourtTest() {
+    fun getReservationsWithPageCategoryBadmintonCourtTest() {
         val sportCategory = SportCategory.BADMINTON_COURT
         val page = 1
         val size = 5
 
-        val reservesWithPage = getReservationService.getReservationListWithPage(
+        val reservesWithPage = getSportReservationService.getReservationsWithPage(
                 category = sportCategory.name,
                 size = size,
                 page = page
@@ -49,12 +49,12 @@ class GetReservationServiceTest {
     }
 
     @Test
-    fun getReservationListWithPageCategoryBaseballCourtTest() {
+    fun getReservationsWithPageCategoryBaseballCourtTest() {
         val sportCategory = SportCategory.BASEBALL_COURT
         val page = 1
         val size = 5
 
-        val reservesWithPage = getReservationService.getReservationListWithPage(
+        val reservesWithPage = getSportReservationService.getReservationsWithPage(
                 category = sportCategory.name,
                 size = size,
                 page = page
@@ -66,12 +66,12 @@ class GetReservationServiceTest {
     }
 
     @Test
-    fun getReservationListWithPageCategoryBasketballCourtTest() {
+    fun getReservationsWithPageCategoryBasketballCourtTest() {
         val sportCategory = SportCategory.BASKETBALL_COURT
         val page = 1
         val size = 5
 
-        val reservesWithPage = getReservationService.getReservationListWithPage(
+        val reservesWithPage = getSportReservationService.getReservationsWithPage(
                 category = sportCategory.name,
                 size = size,
                 page = page
@@ -84,12 +84,12 @@ class GetReservationServiceTest {
 
 
     @Test
-    fun getReservationListWithPageCategoryFootballCourtTest() {
+    fun getReservationsWithPageCategoryFootballCourtTest() {
         val sportCategory = SportCategory.FOOTBALL_COURT
         val page = 1
         val size = 5
 
-        val reservesWithPage = getReservationService.getReservationListWithPage(
+        val reservesWithPage = getSportReservationService.getReservationsWithPage(
                 category = sportCategory.name,
                 size = size,
                 page = page
@@ -101,12 +101,12 @@ class GetReservationServiceTest {
     }
 
     @Test
-    fun getReservationListWithPageCategoryFutsalTest() {
+    fun getReservationsWithPageCategoryFutsalTest() {
         val sportCategory = SportCategory.FUTSAL
         val page = 1
         val size = 5
 
-        val reservesWithPage = getReservationService.getReservationListWithPage(
+        val reservesWithPage = getSportReservationService.getReservationsWithPage(
                 category = sportCategory.name,
                 size = size,
                 page = page
@@ -118,12 +118,12 @@ class GetReservationServiceTest {
     }
 
     @Test
-    fun getReservationListWithPageCategoryFutsalStadiumTest() {
+    fun getReservationsWithPageCategoryFutsalStadiumTest() {
         val sportCategory = SportCategory.FUTSAL_STADIUM
         val page = 1
         val size = 5
 
-        val reservesWithPage = getReservationService.getReservationListWithPage(
+        val reservesWithPage = getSportReservationService.getReservationsWithPage(
                 category = sportCategory.name,
                 size = size,
                 page = page
@@ -135,12 +135,12 @@ class GetReservationServiceTest {
     }
 
     @Test
-    fun getReservationListWithPageCategoryGymTest() {
+    fun getReservationsWithPageCategoryGymTest() {
         val sportCategory = SportCategory.GYM
         val page = 1
         val size = 5
 
-        val reservesWithPage = getReservationService.getReservationListWithPage(
+        val reservesWithPage = getSportReservationService.getReservationsWithPage(
                 category = sportCategory.name,
                 size = size,
                 page = page
@@ -152,12 +152,12 @@ class GetReservationServiceTest {
     }
 
     @Test
-    fun getReservationListWithPageCategoryMultiPurposeStadiumTest() {
+    fun getReservationsWithPageCategoryMultiPurposeStadiumTest() {
         val sportCategory = SportCategory.MULTIPURPOSE_STADIUM
         val page = 1
         val size = 5
 
-        val reservesWithPage = getReservationService.getReservationListWithPage(
+        val reservesWithPage = getSportReservationService.getReservationsWithPage(
                 category = sportCategory.name,
                 size = size,
                 page = page
@@ -169,12 +169,12 @@ class GetReservationServiceTest {
     }
 
     @Test
-    fun getReservationListWithPageCategoryParkGolfCourseTest() {
+    fun getReservationsWithPageCategoryParkGolfCourseTest() {
         val sportCategory = SportCategory.PARK_GOLF_COURSE
         val page = 1
         val size = 5
 
-        val reservesWithPage = getReservationService.getReservationListWithPage(
+        val reservesWithPage = getSportReservationService.getReservationsWithPage(
                 category = sportCategory.name,
                 size = size,
                 page = page
@@ -186,12 +186,12 @@ class GetReservationServiceTest {
     }
 
     @Test
-    fun getReservationListWithPageCategoryPlaygroundTest() {
+    fun getReservationsWithPageCategoryPlaygroundTest() {
         val sportCategory = SportCategory.PLAYGROUND
         val page = 1
         val size = 5
 
-        val reservesWithPage = getReservationService.getReservationListWithPage(
+        val reservesWithPage = getSportReservationService.getReservationsWithPage(
                 category = sportCategory.name,
                 size = size,
                 page = page
@@ -203,12 +203,12 @@ class GetReservationServiceTest {
     }
 
     @Test
-    fun getReservationListWithPageCategoryTableTennisCourtTest() {
+    fun getReservationsWithPageCategoryTableTennisCourtTest() {
         val sportCategory = SportCategory.TABLE_TENNIS_COURT
         val page = 1
         val size = 5
 
-        val reservesWithPage = getReservationService.getReservationListWithPage(
+        val reservesWithPage = getSportReservationService.getReservationsWithPage(
                 category = sportCategory.name,
                 size = size,
                 page = page
@@ -220,12 +220,12 @@ class GetReservationServiceTest {
     }
 
     @Test
-    fun getReservationListWithPageCategoryTennisCourtTest() {
+    fun getReservationsWithPageCategoryTennisCourtTest() {
         val sportCategory = SportCategory.TENNIS_COURT
         val page = 1
         val size = 5
 
-        val reservesWithPage = getReservationService.getReservationListWithPage(
+        val reservesWithPage = getSportReservationService.getReservationsWithPage(
                 category = sportCategory.name,
                 size = size,
                 page = page
@@ -237,12 +237,12 @@ class GetReservationServiceTest {
     }
 
     @Test
-    fun getReservationListWithPageCategoryVolleyballCourtTest() {
+    fun getReservationsWithPageCategoryVolleyballCourtTest() {
         val sportCategory = SportCategory.VOLLEYBALL_COURT
         val page = 1
         val size = 5
 
-        val reservesWithPage = getReservationService.getReservationListWithPage(
+        val reservesWithPage = getSportReservationService.getReservationsWithPage(
                 category = sportCategory.name,
                 size = size,
                 page = page

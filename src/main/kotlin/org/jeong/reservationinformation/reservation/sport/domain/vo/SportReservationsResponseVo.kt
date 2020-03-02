@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-data class ReservationListResponseVo(
+data class SportReservationsResponseVo(
         val hasNext: Boolean,
         val reservationList: List<PublicReservationSportVo>,
         val lastPage: Long? = null

@@ -1,4 +1,4 @@
-package org.jeong.reservationinformation.reservation.sport.domain.vo
+package org.jeong.reservationinformation.reservation.culture.domian.vo
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
@@ -7,11 +7,11 @@ import org.jeong.reservationinformation.reservation.common.domain.vo.ResultVo
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-data class ListPublicReservationSportVo (
+data class ListPublicReservationCultureVo (
         @JsonProperty("list_total_count")
         val list_total_count: Long,
         @JsonProperty("RESULT")
         val RESULT: ResultVo,
         @JsonProperty("row")
-        val row: List<PublicReservationSportVo>
+        val row: List<PublicReservationCultureVo>
 )

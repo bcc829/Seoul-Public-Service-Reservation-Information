@@ -1,4 +1,4 @@
-package org.jeong.reservationinformation.reservation.sport.domain.vo
+package org.jeong.reservationinformation.reservation.common.domain.vo
 
 data class ResultVo(
         val CODE: String,
