@@ -1,0 +1,9 @@
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure:
+            mongo:
+              embedded: debug
+      mongodb: debug

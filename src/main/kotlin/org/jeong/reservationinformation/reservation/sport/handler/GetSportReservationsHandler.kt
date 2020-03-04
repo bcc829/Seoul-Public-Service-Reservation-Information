@@ -11,11 +11,11 @@ import reactor.core.publisher.Mono
 import org.springframework.web.reactive.function.server.ServerResponse.ok
 
 @Component
-class GetReservationListHandler(
+class GetSportReservationsHandler(
         private val getSportReservationService: GetSportReservationService
 ) {
 
-    fun getReservationList(request: ServerRequest): Mono<ServerResponse> =
+    fun getReservations(request: ServerRequest): Mono<ServerResponse> =
             ok()
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(getSportReservationService.getReservationsWithPage(

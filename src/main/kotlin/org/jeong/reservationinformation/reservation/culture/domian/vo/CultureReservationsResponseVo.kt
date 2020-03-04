@@ -7,6 +7,6 @@ import com.fasterxml.jackson.annotation.JsonInclude
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class CultureReservationsResponseVo(
         val hasNext: Boolean,
-        val reservationList: List<PublicReservationCultureVo>,
+        val reservations: List<PublicReservationCultureVo>,
         val lastPage: Long? = null
 )

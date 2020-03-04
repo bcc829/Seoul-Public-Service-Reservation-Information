@@ -43,12 +43,12 @@ class GetCultureReservationService(@Value("\${api.key}")
                         when (it.ListPublicReservationCulture == null) {
                             true -> CultureReservationsResponseVo(
                                     hasNext = false,
-                                    reservationList = listOf()
+                                    reservations = listOf()
                             )
 
                             false -> CultureReservationsResponseVo(
                                     hasNext = it.ListPublicReservationCulture.list_total_count > page * size,
-                                    reservationList = it.ListPublicReservationCulture.row,
+                                    reservations = it.ListPublicReservationCulture.row,
                                     lastPage = pageUtil.getLastPage(
                                             totalCount = it.ListPublicReservationCulture.list_total_count,
                                             size = size

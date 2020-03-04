@@ -27,7 +27,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservationList.size == 5 }
+                .expectNextMatches { it.reservations.size == 5 }
                 .verifyComplete()
     }
 
@@ -44,7 +44,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservationList.isNotEmpty() }
+                .expectNextMatches { it.reservations.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -61,7 +61,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservationList.isNotEmpty() }
+                .expectNextMatches { it.reservations.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -78,7 +78,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservationList.isNotEmpty() }
+                .expectNextMatches { it.reservations.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -96,7 +96,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservationList.isNotEmpty() }
+                .expectNextMatches { it.reservations.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -113,7 +113,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservationList.isNotEmpty() }
+                .expectNextMatches { it.reservations.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -130,7 +130,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservationList.isNotEmpty() }
+                .expectNextMatches { it.reservations.isNotEmpty() && it.reservations.size == 5 }
                 .verifyComplete()
     }
 
@@ -147,7 +147,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservationList.isNotEmpty() }
+                .expectNextMatches { it.reservations.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -164,7 +164,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservationList.isNotEmpty() }
+                .expectNextMatches { it.reservations.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -181,7 +181,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservationList.isNotEmpty() }
+                .expectNextMatches { it.reservations.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -198,7 +198,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservationList.isNotEmpty() }
+                .expectNextMatches { it.reservations.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -215,7 +215,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservationList.isNotEmpty() }
+                .expectNextMatches { it.reservations.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -232,7 +232,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservationList.isNotEmpty() }
+                .expectNextMatches { it.reservations.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -249,7 +249,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservationList.isNotEmpty() }
+                .expectNextMatches { it.reservations.isNotEmpty() }
                 .verifyComplete()
     }
 }

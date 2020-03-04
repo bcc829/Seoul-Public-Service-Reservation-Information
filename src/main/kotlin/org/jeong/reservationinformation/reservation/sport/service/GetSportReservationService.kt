@@ -46,12 +46,12 @@ class GetSportReservationService(
                         when (it.ListPublicReservationSport == null) {
                             true -> SportReservationsResponseVo(
                                     hasNext = false,
-                                    reservationList = listOf()
+                                    reservations = listOf()
                             )
 
                             false -> SportReservationsResponseVo(
                                     hasNext = it.ListPublicReservationSport.list_total_count > page * size,
-                                    reservationList = it.ListPublicReservationSport.row,
+                                    reservations = it.ListPublicReservationSport.row,
                                     lastPage = pageUtil.getLastPage(
                                             totalCount = it.ListPublicReservationSport.list_total_count,
                                             size = size

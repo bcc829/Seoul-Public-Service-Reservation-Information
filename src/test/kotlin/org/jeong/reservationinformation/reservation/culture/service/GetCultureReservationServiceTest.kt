@@ -1,8 +1,6 @@
 package org.jeong.reservationinformation.reservation.culture.service
 
 import org.jeong.reservationinformation.reservation.culture.domian.enums.CultureCategory
-import org.jeong.reservationinformation.reservation.sport.domain.enums.SportCategory
-import org.jeong.reservationinformation.reservation.sport.service.GetSportReservationService
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -30,7 +28,7 @@ class GetCultureReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservationList.isNotEmpty() }
+                .expectNextMatches { it.reservations.isNotEmpty() && it.reservations.size == 5 }
                 .verifyComplete()
     }
 
@@ -47,7 +45,7 @@ class GetCultureReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservationList.isNotEmpty() }
+                .expectNextMatches { it.reservations.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -64,7 +62,7 @@ class GetCultureReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservationList.isNotEmpty() }
+                .expectNextMatches { it.reservations.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -81,7 +79,7 @@ class GetCultureReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservationList.isNotEmpty() }
+                .expectNextMatches { it.reservations.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -98,7 +96,7 @@ class GetCultureReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservationList.isNotEmpty() }
+                .expectNextMatches { it.reservations.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -115,7 +113,7 @@ class GetCultureReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservationList.isNotEmpty() }
+                .expectNextMatches { it.reservations.isNotEmpty() }
                 .verifyComplete()
     }
 }
