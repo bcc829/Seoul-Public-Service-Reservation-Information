@@ -1,8 +1,6 @@
 package org.jeong.reservationinformation.reservation.culture.repository
 
 import org.jeong.reservationinformation.reservation.culture.domian.document.CultureReservationComment
-import org.jeong.reservationinformation.reservation.sport.domain.document.SportReservationComment
-import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
