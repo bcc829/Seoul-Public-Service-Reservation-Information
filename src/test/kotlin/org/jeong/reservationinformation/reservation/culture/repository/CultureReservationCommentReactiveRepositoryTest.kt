@@ -42,7 +42,7 @@ class CultureReservationCommentReactiveRepositoryTest {
     }
 
     @Test
-    fun cultureReservationCommentReactiveRepositoryFindBySportReservationSvcIdTest() {
+    fun cultureReservationCommentReactiveRepositoryFindByCultureReservationSvcIdOrderByRegisterDateDesc() {
         cultureReservationCommentReactiveRepository
                 .save(CultureReservationComment(
                         cultureReservationSvcId = "testSvcId",
@@ -62,17 +62,17 @@ class CultureReservationCommentReactiveRepositoryTest {
                 )).block()
 
         val findData = cultureReservationCommentReactiveRepository
-                .findByCultureReservationSvcId("testSvcId")
+                .findByCultureReservationSvcIdOrderByRegisterDateDesc("testSvcId")
 
         StepVerifier
                 .create(findData)
                 .assertNext {
                     assertEquals(it.cultureReservationSvcId, "testSvcId")
-                    assertEquals("test comment1", it.comment)
+                    assertEquals("test comment2", it.comment)
                 }
                 .assertNext {
                     assertEquals(it.cultureReservationSvcId, "testSvcId")
-                    assertEquals("test comment2", it.comment)
+                    assertEquals("test comment1", it.comment)
                 }
                 .verifyComplete()
     }

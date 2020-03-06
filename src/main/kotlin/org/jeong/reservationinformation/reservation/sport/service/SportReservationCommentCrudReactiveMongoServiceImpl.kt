@@ -13,15 +13,18 @@ import reactor.core.publisher.Mono
 class SportReservationCommentCrudReactiveMongoServiceImpl(
         private val sportReservationCommentReactiveRepository: SportReservationCommentReactiveRepository
 ) : SportReservationCommentCrudService {
+
     override fun getSportReservationCommentBySvcId(svcId: String): Flux<ReservationCommentVo> =
-            sportReservationCommentReactiveRepository.findBySportReservationSvcId(svcId)
+            sportReservationCommentReactiveRepository.findBySportReservationSvcIdOrderByRegisterDateDesc(svcId)
                     .map {
                         ReservationCommentVo(
                                 id = it.id!!,
                                 userName = it.userName,
                                 rating = it.rating,
                                 comment = it.comment,
-                                svcId = it.sportReservationSvcId
+                                svcId = it.sportReservationSvcId,
+                                registerDate = it.registerDate,
+                                updateDate = it.updateDate
                         )
                     }
 
@@ -39,7 +42,9 @@ class SportReservationCommentCrudReactiveMongoServiceImpl(
                         userName = it.userName,
                         rating = it.rating,
                         comment = it.comment,
-                        svcId = it.sportReservationSvcId
+                        svcId = it.sportReservationSvcId,
+                        registerDate = it.registerDate,
+                        updateDate = it.updateDate
                 )
             }
 
@@ -61,10 +66,21 @@ class SportReservationCommentCrudReactiveMongoServiceImpl(
                                 comment = it.comment,
                                 rating = it.rating,
                                 id = sportReservationCommentId,
-                                svcId = it.sportReservationSvcId
+                                svcId = it.sportReservationSvcId,
+                                registerDate = it.registerDate,
+                                updateDate = it.updateDate
                         )
                     }.switchIfEmpty(Mono.error(NoSuchElementException("$sportReservationCommentId is not exist")))
 
-    override fun deleteSportReservationComment(sportReservationCommentId: String): Mono<Void> =
-        sportReservationCommentReactiveRepository.deleteById(sportReservationCommentId)
+    override fun deleteSportReservationComment(sportReservationCommentId: String, password: String): Mono<Void> =
+        sportReservationCommentReactiveRepository.findById(sportReservationCommentId)
+                .flatMap {
+                    if(it.password == password) {
+                        sportReservationCommentReactiveRepository.deleteById(sportReservationCommentId)
+                    }
+                    else
+                        Mono.error(IllegalAccessException("password is not matching"))
+                }.switchIfEmpty(
+                        Mono.empty()
+                )
 }

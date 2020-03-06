@@ -11,5 +11,5 @@ interface SportReservationCommentCrudService {
     fun insertSportReservationComment(insertReservationCommentVo: InsertReservationCommentVo): Mono<ReservationCommentVo>
     fun updateSportReservationComment(updateReservationCommentVo: UpdateReservationCommentVo,
                                       sportReservationCommentId: String): Mono<ReservationCommentVo>
-    fun deleteSportReservationComment(sportReservationCommentId: String): Mono<Void>
+    fun deleteSportReservationComment(sportReservationCommentId: String, password: String): Mono<Void>
 }

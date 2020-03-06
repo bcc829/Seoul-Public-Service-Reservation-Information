@@ -160,7 +160,7 @@ class SportReservationCommentCrudServiceTest {
         ).block()
 
         if (comment != null) {
-            sportReservationCommentCrudService.deleteSportReservationComment(comment.id!!).block()
+            sportReservationCommentCrudService.deleteSportReservationComment(comment.id!!, comment.password).block()
         }
 
         val comments = sportReservationCommentReactiveRepository.count()

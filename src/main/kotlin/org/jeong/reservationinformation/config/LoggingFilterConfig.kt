@@ -17,8 +17,7 @@ class LoggingFilterConfig {
                 val startTime = System.currentTimeMillis()
 
                 return@WebFilter chain.filter(exchange).doAfterTerminate {
-                    logger.info("""
-                        {"method":${exchange.request.method},"params":"${exchange.request.queryParams}","time": ${System.currentTimeMillis() - startTime}}
+                    logger.info("""{"path":${exchange.request.path}, "method":${exchange.request.method},"params":"${exchange.request.queryParams}","time": ${System.currentTimeMillis() - startTime}}
                     """.trimIndent())
                 }
             }

@@ -7,5 +7,5 @@ import reactor.core.publisher.Flux
 
 @Repository
 interface SportReservationCommentReactiveRepository : ReactiveMongoRepository<SportReservationComment, String> {
-    fun findBySportReservationSvcId(sportReservationSvcId: String): Flux<SportReservationComment>
+    fun findBySportReservationSvcIdOrderByRegisterDateDesc(sportReservationSvcId: String): Flux<SportReservationComment>
 }

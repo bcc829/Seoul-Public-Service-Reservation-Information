@@ -23,7 +23,7 @@ class GetSportReservationsHandler(
                                     .map { it.toString() }
                                     .orElseGet { SportCategory.ALL.name },
                             page = request.queryParam("page")
-                                    .map { if(it.toInt() > 0) it.toInt() else 1 }
+                                    .map { it.toInt() }
                                     .orElseGet { 1 },
                             size = request.queryParam("size")
                                     .map { if(it.toInt() > 1000) 1000 else it.toInt() }
