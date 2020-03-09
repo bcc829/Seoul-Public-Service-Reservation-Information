@@ -15,9 +15,16 @@ class SportReservationsRouterConfig(
 ) {
     @Bean
     fun getSportReservationsRouter() =
-            nest(path("/reservation/sport"), router {
+            nest(path("/sport/reservations"), router {
                 listOf(
-                        GET("", getSportReservationsHandler::getReservations),
+                        GET("", getSportReservationsHandler::getReservations)
+                )
+            })
+
+    @Bean
+    fun getSportReservationCommentRouter() =
+            nest(path("/sport/reservation"), router {
+                listOf(
                         GET("/comments", sportReservationCommentHandler::getCommentsBySvcId),
                         POST("/comment", sportReservationCommentHandler::insertComment),
                         PUT("/comment", sportReservationCommentHandler::updateComment),

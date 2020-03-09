@@ -17,15 +17,7 @@ class SportReservationCommentCrudReactiveMongoServiceImpl(
     override fun getSportReservationCommentBySvcId(svcId: String): Flux<ReservationCommentVo> =
             sportReservationCommentReactiveRepository.findBySportReservationSvcIdOrderByRegisterDateDesc(svcId)
                     .map {
-                        ReservationCommentVo(
-                                id = it.id!!,
-                                userName = it.userName,
-                                rating = it.rating,
-                                comment = it.comment,
-                                svcId = it.sportReservationSvcId,
-                                registerDate = it.registerDate,
-                                updateDate = it.updateDate
-                        )
+                        it.toReservationCommentVo()
                     }
 
 
@@ -37,15 +29,7 @@ class SportReservationCommentCrudReactiveMongoServiceImpl(
                     userName = insertReservationCommentVo.userName,
                     password = insertReservationCommentVo.password
             )).map {
-                ReservationCommentVo(
-                        id = it.id!!,
-                        userName = it.userName,
-                        rating = it.rating,
-                        comment = it.comment,
-                        svcId = it.sportReservationSvcId,
-                        registerDate = it.registerDate,
-                        updateDate = it.updateDate
-                )
+                it.toReservationCommentVo()
             }
 
     override fun updateSportReservationComment(updateReservationCommentVo: UpdateReservationCommentVo,
@@ -61,15 +45,7 @@ class SportReservationCommentCrudReactiveMongoServiceImpl(
                             Mono.error(IllegalAccessException("password is not matching"))
                         }
                     }.map {
-                        ReservationCommentVo(
-                                userName = it.userName,
-                                comment = it.comment,
-                                rating = it.rating,
-                                id = sportReservationCommentId,
-                                svcId = it.sportReservationSvcId,
-                                registerDate = it.registerDate,
-                                updateDate = it.updateDate
-                        )
+                        it.toReservationCommentVo()
                     }.switchIfEmpty(Mono.error(NoSuchElementException("$sportReservationCommentId is not exist")))
 
     override fun deleteSportReservationComment(sportReservationCommentId: String, password: String): Mono<Void> =

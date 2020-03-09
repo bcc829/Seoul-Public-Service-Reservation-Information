@@ -1,5 +1,6 @@
 package org.jeong.reservationinformation.reservation.culture.domian.document
 
+import org.jeong.reservationinformation.reservation.common.domain.vo.ReservationCommentVo
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.LastModifiedDate
@@ -19,4 +20,15 @@ data class CultureReservationComment(
         val registerDate: Date? = null,
         @LastModifiedDate
         val updateDate: Date? = null
-)
+) {
+        fun toReservationCommentVo(): ReservationCommentVo =
+                ReservationCommentVo(
+                        id = this.id!!,
+                        svcId = this.cultureReservationSvcId,
+                        rating = this.rating,
+                        comment = this.comment,
+                        userName = this.userName,
+                        updateDate = this.updateDate,
+                        registerDate = this.registerDate
+                )
+}
