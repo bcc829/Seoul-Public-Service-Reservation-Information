@@ -31,8 +31,8 @@ class CultureReservationCommentCrudReactiveMongoServiceImpl(
                         it.toReservationCommentVo()
                     }
 
-    override fun updateCultureReservationComment(updateReservationCommentVo: UpdateReservationCommentVo, cultureReservationCommentId: String): Mono<ReservationCommentVo> =
-            cultureReservationCommentReactiveRepository.findById(cultureReservationCommentId)
+    override fun updateCultureReservationComment(updateReservationCommentVo: UpdateReservationCommentVo): Mono<ReservationCommentVo> =
+            cultureReservationCommentReactiveRepository.findById(updateReservationCommentVo.id)
                     .flatMap {
                         if (it.password == updateReservationCommentVo.password) {
                             it.rating = updateReservationCommentVo.rating
@@ -44,16 +44,16 @@ class CultureReservationCommentCrudReactiveMongoServiceImpl(
                         }
                     }.map {
                         it.toReservationCommentVo()
-                    }.switchIfEmpty(Mono.error(NoSuchElementException("$cultureReservationCommentId is not exist")))
+                    }.switchIfEmpty(Mono.error(NoSuchElementException("${updateReservationCommentVo.id} is not exist")))
 
     override fun deleteCultureReservationComment(cultureReservationCommentId: String, password: String): Mono<Void> =
             cultureReservationCommentReactiveRepository.findById(cultureReservationCommentId)
                     .flatMap {
                         if(it.password == password) {
                             cultureReservationCommentReactiveRepository.deleteById(cultureReservationCommentId)
-                        }
-                        else
+                        } else {
                             Mono.error(IllegalAccessException("password is not matching"))
+                        }
                     }.switchIfEmpty(
                             Mono.empty()
                     )

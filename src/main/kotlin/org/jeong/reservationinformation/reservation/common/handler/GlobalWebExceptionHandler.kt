@@ -29,7 +29,7 @@ class GlobalWebExceptionHandler : ErrorWebExceptionHandler {
         exchange.response.headers.contentType = MediaType.APPLICATION_PROBLEM_JSON
         exchange.response.statusCode = responseStatusException.status
         val buffer = exchange.response.bufferFactory().wrap("""{
-                "message": "${responseStatusException.message.replace("\"", "")}",
+                "message": "${responseStatusException.reason}",
                 "status": "${responseStatusException.status}",
                 "error": "${responseStatusException.status.reasonPhrase}"
             }""".toByteArray())

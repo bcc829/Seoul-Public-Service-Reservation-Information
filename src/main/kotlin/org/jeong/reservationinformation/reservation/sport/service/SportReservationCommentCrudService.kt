@@ -9,7 +9,6 @@ import reactor.core.publisher.Mono
 interface SportReservationCommentCrudService {
     fun getSportReservationCommentBySvcId(svcId: String): Flux<ReservationCommentVo>
     fun insertSportReservationComment(insertReservationCommentVo: InsertReservationCommentVo): Mono<ReservationCommentVo>
-    fun updateSportReservationComment(updateReservationCommentVo: UpdateReservationCommentVo,
-                                      sportReservationCommentId: String): Mono<ReservationCommentVo>
+    fun updateSportReservationComment(updateReservationCommentVo: UpdateReservationCommentVo): Mono<ReservationCommentVo>
     fun deleteSportReservationComment(sportReservationCommentId: String, password: String): Mono<Void>
 }

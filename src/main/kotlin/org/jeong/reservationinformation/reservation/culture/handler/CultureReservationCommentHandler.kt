@@ -45,9 +45,7 @@ class CultureReservationCommentHandler(
                         ok()
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .body(cultureReservationCommentCrudService.updateCultureReservationComment(
-                                        updateReservationCommentVo = it,
-                                        cultureReservationCommentId = request.queryParam("id")
-                                                .orElseThrow { InvalidParameterException("id is not exist") }
+                                        updateReservationCommentVo = it
                                 ), ReservationCommentVo::class.java)
                     }.switchIfEmpty(
                             ServerResponse.badRequest()

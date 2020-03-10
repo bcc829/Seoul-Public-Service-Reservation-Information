@@ -46,9 +46,7 @@ class SportReservationCommentHandler(
                         ok()
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .body(sportReservationCommentCrudService.updateSportReservationComment(
-                                        updateReservationCommentVo = it,
-                                        sportReservationCommentId = request.queryParam("id")
-                                                .orElseThrow { InvalidParameterException("id is not exist") }
+                                        updateReservationCommentVo = it
                                 ), ReservationCommentVo::class.java)
                     }.switchIfEmpty(
                             badRequest()

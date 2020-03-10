@@ -1,5 +1,6 @@
 package org.jeong.reservationinformation.reservation.culture.domian.document
 
+
 import org.jeong.reservationinformation.reservation.common.domain.vo.ReservationCommentVo
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.Id
@@ -31,4 +32,5 @@ data class CultureReservationComment(
                         updateDate = this.updateDate,
                         registerDate = this.registerDate
                 )
+
 }

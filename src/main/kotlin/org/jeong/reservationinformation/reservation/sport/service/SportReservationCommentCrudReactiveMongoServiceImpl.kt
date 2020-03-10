@@ -32,9 +32,8 @@ class SportReservationCommentCrudReactiveMongoServiceImpl(
                 it.toReservationCommentVo()
             }
 
-    override fun updateSportReservationComment(updateReservationCommentVo: UpdateReservationCommentVo,
-                                               sportReservationCommentId: String): Mono<ReservationCommentVo> =
-            sportReservationCommentReactiveRepository.findById(sportReservationCommentId)
+    override fun updateSportReservationComment(updateReservationCommentVo: UpdateReservationCommentVo): Mono<ReservationCommentVo> =
+            sportReservationCommentReactiveRepository.findById(updateReservationCommentVo.id)
                     .flatMap {
                         if (it.password == updateReservationCommentVo.password) {
                             it.rating = updateReservationCommentVo.rating
@@ -46,7 +45,7 @@ class SportReservationCommentCrudReactiveMongoServiceImpl(
                         }
                     }.map {
                         it.toReservationCommentVo()
-                    }.switchIfEmpty(Mono.error(NoSuchElementException("$sportReservationCommentId is not exist")))
+                    }.switchIfEmpty(Mono.error(NoSuchElementException("${updateReservationCommentVo.id} is not exist")))
 
     override fun deleteSportReservationComment(sportReservationCommentId: String, password: String): Mono<Void> =
         sportReservationCommentReactiveRepository.findById(sportReservationCommentId)
