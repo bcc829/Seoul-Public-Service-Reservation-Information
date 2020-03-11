@@ -49,9 +49,7 @@ class SportReservationCommentHandler(
                                         updateReservationCommentVo = it
                                 ), ReservationCommentVo::class.java)
                     }.switchIfEmpty(
-                            badRequest()
-                                    .contentType(MediaType.APPLICATION_JSON)
-                                    .build()
+                            Mono.error(InvalidParameterException("request body is not exist"))
                     )
 
     fun deleteComment(request: ServerRequest): Mono<ServerResponse> =
