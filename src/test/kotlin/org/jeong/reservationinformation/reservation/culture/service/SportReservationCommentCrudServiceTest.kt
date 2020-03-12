@@ -92,10 +92,11 @@ class SportReservationCommentCrudServiceTest {
 
         val data = sportReservationCommentCrudService
                 .updateSportReservationComment(UpdateReservationCommentVo(
+                        id = comment.id!!,
                         password = comment.password,
                         rating = 5,
                         comment = "update comment"
-                ), comment.id!!)
+                ))
 
         StepVerifier.create(data)
                 .assertNext {
@@ -110,10 +111,11 @@ class SportReservationCommentCrudServiceTest {
 
         val data = sportReservationCommentCrudService
                 .updateSportReservationComment(UpdateReservationCommentVo(
+                        id = "231",
                         password = "pass",
                         rating = 5,
                         comment = "update comment"
-                ), "231")
+                ))
 
         StepVerifier.create(data)
                 .verifyError(NoSuchElementException::class.java)
@@ -137,10 +139,11 @@ class SportReservationCommentCrudServiceTest {
 
         val data = sportReservationCommentCrudService
                 .updateSportReservationComment(UpdateReservationCommentVo(
+                        id = comment.id!!,
                         password = "not match",
                         rating = 5,
                         comment = "update comment"
-                ), comment.id!!)
+                ))
 
         StepVerifier.create(data)
                 .verifyError(IllegalAccessException::class.java)

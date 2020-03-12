@@ -5,9 +5,6 @@ import org.jeong.reservationinformation.reservation.common.domain.vo.UpdateReser
 import org.jeong.reservationinformation.reservation.culture.domian.document.CultureReservationComment
 import org.jeong.reservationinformation.reservation.culture.repository.CultureReservationCommentReactiveRepository
 import org.jeong.reservationinformation.reservation.culture.service.CultureReservationCommentCrudService
-import org.jeong.reservationinformation.reservation.sport.domain.document.SportReservationComment
-import org.jeong.reservationinformation.reservation.sport.repository.SportReservationCommentReactiveRepository
-import org.jeong.reservationinformation.reservation.sport.service.SportReservationCommentCrudService
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -95,10 +92,11 @@ class CultureReservationCommentCrudServiceTest {
 
         val data = cultureReservationCommentCrudService
                 .updateCultureReservationComment(UpdateReservationCommentVo(
+                        id = comment.id!!,
                         password = comment.password,
                         rating = 5,
                         comment = "update comment"
-                ), comment.id!!)
+                ))
 
         StepVerifier.create(data)
                 .assertNext {
@@ -113,10 +111,11 @@ class CultureReservationCommentCrudServiceTest {
 
         val data = cultureReservationCommentCrudService
                 .updateCultureReservationComment(UpdateReservationCommentVo(
+                        id = "231",
                         password = "pass",
                         rating = 5,
                         comment = "update comment"
-                ), "231")
+                ))
 
         StepVerifier.create(data)
                 .verifyError(NoSuchElementException::class.java)
@@ -140,10 +139,11 @@ class CultureReservationCommentCrudServiceTest {
 
         val data = cultureReservationCommentCrudService
                 .updateCultureReservationComment(UpdateReservationCommentVo(
+                        id = comment.id!!,
                         password = "not match",
                         rating = 5,
                         comment = "update comment"
-                ), comment.id!!)
+                ))
 
         StepVerifier.create(data)
                 .verifyError(IllegalAccessException::class.java)
