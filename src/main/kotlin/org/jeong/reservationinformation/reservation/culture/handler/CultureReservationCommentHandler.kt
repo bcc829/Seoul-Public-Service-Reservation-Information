@@ -34,9 +34,7 @@ class CultureReservationCommentHandler(
                                         insertReservationCommentVo = it
                                 ), ReservationCommentVo::class.java)
                     }.switchIfEmpty(
-                            ServerResponse.badRequest()
-                                    .contentType(MediaType.APPLICATION_JSON)
-                                    .build()
+                            Mono.error(InvalidParameterException("request body is not exist"))
                     )
 
     fun updateComment(request: ServerRequest): Mono<ServerResponse> =

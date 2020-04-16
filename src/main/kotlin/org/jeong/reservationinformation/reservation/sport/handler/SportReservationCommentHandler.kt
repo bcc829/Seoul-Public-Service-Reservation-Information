@@ -8,7 +8,6 @@ import org.springframework.http.MediaType
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.server.ServerRequest
 import org.springframework.web.reactive.function.server.ServerResponse
-import org.springframework.web.reactive.function.server.ServerResponse.badRequest
 import org.springframework.web.reactive.function.server.ServerResponse.ok
 import reactor.core.publisher.Mono
 import java.security.InvalidParameterException
@@ -35,10 +34,9 @@ class SportReservationCommentHandler(
                                         insertReservationCommentVo = it
                                 ), ReservationCommentVo::class.java)
                     }.switchIfEmpty(
-                            badRequest()
-                                    .contentType(MediaType.APPLICATION_JSON)
-                                    .build()
+                            Mono.error(InvalidParameterException("request body is not exist"))
                     )
+
 
     fun updateComment(request: ServerRequest): Mono<ServerResponse> =
             request.bodyToMono(UpdateReservationCommentVo::class.java)
