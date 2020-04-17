@@ -7,5 +7,6 @@ import reactor.core.publisher.Flux
 
 @Repository
 interface CultureReservationCommentReactiveRepository : ReactiveMongoRepository<CultureReservationComment, String> {
-    fun findByCultureReservationSvcIdOrderByRegisterDateDesc(cultureReservationSvcId: String): Flux<CultureReservationComment>
+    fun findByCultureReservationSvcIdOrderByRegisterDateDesc(cultureReservationSvcId: String)
+            : Flux<CultureReservationComment>
 }

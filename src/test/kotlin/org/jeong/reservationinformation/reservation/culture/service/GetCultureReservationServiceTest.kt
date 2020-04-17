@@ -8,7 +8,6 @@ import org.springframework.test.context.TestPropertySource
 import reactor.test.StepVerifier
 
 @SpringBootTest
-@TestPropertySource(properties = ["api.key = sample"])
 class GetCultureReservationServiceTest {
 
     @Autowired

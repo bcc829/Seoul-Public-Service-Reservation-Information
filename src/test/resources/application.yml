@@ -7,3 +7,6 @@ logging:
             mongo:
               embedded: debug
       mongodb: debug
+
+api:
+  key: sample
