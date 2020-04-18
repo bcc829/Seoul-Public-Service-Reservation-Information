@@ -26,8 +26,7 @@ class CultureReservationCommentCrudReactiveMongoServiceImpl(
                             comment = insertReservationCommentVo.comment,
                             rating = insertReservationCommentVo.rating,
                             password = insertReservationCommentVo.password
-                    ))
-                    .map {
+                    )).map {
                         it.toReservationCommentVo()
                     }
 
