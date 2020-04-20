@@ -1,6 +1,6 @@
 package org.jeong.reservationinformation.reservation.culture.service
 
-import org.jeong.reservationinformation.reservation.common.util.PageUtil
+import org.jeong.reservationinformation.common.util.PageUtil
 import org.jeong.reservationinformation.reservation.culture.domian.enums.CultureCategory
 import org.jeong.reservationinformation.reservation.culture.domian.vo.CultureReservationsResponseVo
 import org.jeong.reservationinformation.reservation.culture.domian.vo.ListPublicReservationCultureResponseVo

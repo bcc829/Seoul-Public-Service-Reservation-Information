@@ -1,4 +1,4 @@
-package org.jeong.reservationinformation.reservation.common.util
+package org.jeong.reservationinformation.common.util
 
 import org.springframework.stereotype.Component
 import kotlin.math.ceil

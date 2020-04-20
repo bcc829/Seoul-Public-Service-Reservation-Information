@@ -1,5 +1,6 @@
 package org.jeong.reservationinformation.community.domain.document
 
+import org.jeong.reservationinformation.community.domain.vo.PostCommentVo
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.LastModifiedDate
@@ -17,4 +18,12 @@ data class PostComment (
         val registerDate: Date? = null,
         @LastModifiedDate
         val updateDate: Date? = null
-)
+) {
+        fun toPostCommentVo(): PostCommentVo {
+                return PostCommentVo(id = this.id!!,
+                        userName = this.userName,
+                        comment = this.comment,
+                        registerDate = this.registerDate!!,
+                        updateDate = this.updateDate!!)
+        }
+}

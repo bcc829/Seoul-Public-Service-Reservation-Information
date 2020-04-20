@@ -1,6 +1,6 @@
 package org.jeong.reservationinformation.reservation.sport.service
 
-import org.jeong.reservationinformation.reservation.common.util.PageUtil
+import org.jeong.reservationinformation.common.util.PageUtil
 import org.jeong.reservationinformation.reservation.sport.domain.enums.SportCategory
 import org.jeong.reservationinformation.reservation.sport.domain.vo.ListPublicReservationSportResponseVo
 import org.jeong.reservationinformation.reservation.sport.domain.vo.SportReservationsResponseVo
