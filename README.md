@@ -11,8 +11,10 @@
 주의점: 서울열린데이터광장의 open api를 이용 하고 있으며 실행 시 open api의 키 값이 필요합니다.
 https://data.seoul.go.kr 에서 api key를 발급 받으신 후 실행 시 환경 변수 값을 api.key={발급 받은 키}로 등록 하셔야 합니다.
 또는 application.yml에 다음과 같이 작성하셔도 됩니다.
+~~~
 api:
   key: {발급 받은 키}
+~~~
 ---
 
 체육시설 예약 목록 조회
