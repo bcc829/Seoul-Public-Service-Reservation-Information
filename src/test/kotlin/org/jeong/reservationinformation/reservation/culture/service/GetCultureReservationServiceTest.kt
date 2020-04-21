@@ -4,7 +4,6 @@ import org.jeong.reservationinformation.reservation.culture.domian.enums.Culture
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.TestPropertySource
 import reactor.test.StepVerifier
 
 @SpringBootTest
@@ -27,7 +26,7 @@ class GetCultureReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservations.isNotEmpty() && it.reservations.size == 5 }
+                .expectNextMatches { it.content.isNotEmpty() && it.pageInfo.numberOfElements == 5 }
                 .verifyComplete()
     }
 
@@ -44,7 +43,7 @@ class GetCultureReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservations.isNotEmpty() }
+                .expectNextMatches { it.content.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -61,7 +60,7 @@ class GetCultureReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservations.isNotEmpty() }
+                .expectNextMatches { it.content.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -78,7 +77,7 @@ class GetCultureReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservations.isNotEmpty() }
+                .expectNextMatches { it.content.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -95,7 +94,7 @@ class GetCultureReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservations.isNotEmpty() }
+                .expectNextMatches { it.content.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -112,7 +111,7 @@ class GetCultureReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservations.isNotEmpty() }
+                .expectNextMatches { it.content.isNotEmpty() }
                 .verifyComplete()
     }
 }

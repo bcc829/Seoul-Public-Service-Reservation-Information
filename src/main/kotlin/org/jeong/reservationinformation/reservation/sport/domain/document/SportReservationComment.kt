@@ -12,8 +12,8 @@ data class SportReservationComment(
         @Id
         val id: String? = null,
         val sportReservationSvcId: String,
-        var userName: String,
-        var password: String,
+        val userName: String,
+        val password: String,
         var rating: Int,
         var comment: String,
         @CreatedDate

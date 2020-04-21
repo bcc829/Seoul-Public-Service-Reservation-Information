@@ -11,8 +11,9 @@ import java.util.*
 data class PostComment (
         @Id
         val id: String? = null,
-        var userName: String,
-        var password: String,
+        val postId: String,
+        val userName: String,
+        val password: String,
         var comment: String,
         @CreatedDate
         val registerDate: Date? = null,

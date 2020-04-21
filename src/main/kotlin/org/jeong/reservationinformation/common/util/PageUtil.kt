@@ -15,6 +15,6 @@ class PageUtil {
         return "/$startIndex/$endIndex/"
     }
 
-    fun getLastPage(totalCount: Long, size: Int): Long =
-            ceil(totalCount / size.toDouble()).toLong()
+    fun getLastPage(totalCount: Long, size: Int): Int =
+            ceil(totalCount / size.toDouble()).toInt()
 }

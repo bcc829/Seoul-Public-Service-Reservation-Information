@@ -10,7 +10,6 @@ data class PostVo(
         val title: String,
         val content: String,
         val viewCount: Int,
-        val postComments: List<PostCommentVo>,
         val registerDate: Date,
         val updateDate: Date
 )

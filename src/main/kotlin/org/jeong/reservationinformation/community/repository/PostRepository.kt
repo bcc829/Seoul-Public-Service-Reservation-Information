@@ -9,6 +9,8 @@ import reactor.core.publisher.Flux
 
 @Repository
 interface PostRepository : ReactiveMongoRepository<Post, String> {
+    fun findByIdNotNull(pageable: Pageable): Flux<Post>
+
     fun findAllByContentLikeAndPostCategory(pageable: Pageable, searchKeyword: String, category: PostCategory)
             : Flux<Post>
 

@@ -25,7 +25,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservations.size == 5 }
+                .expectNextMatches { it.pageInfo.numberOfElements == 5 }
                 .verifyComplete()
     }
 
@@ -42,7 +42,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservations.isNotEmpty() }
+                .expectNextMatches { it.content.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -59,7 +59,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservations.isNotEmpty() }
+                .expectNextMatches { it.content.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -76,7 +76,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservations.isNotEmpty() }
+                .expectNextMatches { it.content.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -94,7 +94,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservations.isNotEmpty() }
+                .expectNextMatches { it.content.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -111,7 +111,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservations.isNotEmpty() }
+                .expectNextMatches { it.content.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -128,7 +128,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservations.isNotEmpty() && it.reservations.size == 5 }
+                .expectNextMatches { it.content.isNotEmpty() && it.pageInfo.numberOfElements == 5 }
                 .verifyComplete()
     }
 
@@ -145,7 +145,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservations.isNotEmpty() }
+                .expectNextMatches { it.content.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -162,7 +162,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservations.isNotEmpty() }
+                .expectNextMatches { it.content.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -179,7 +179,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservations.isNotEmpty() }
+                .expectNextMatches { it.content.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -196,7 +196,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservations.isNotEmpty() }
+                .expectNextMatches { it.content.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -213,7 +213,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservations.isNotEmpty() }
+                .expectNextMatches { it.content.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -230,7 +230,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservations.isNotEmpty() }
+                .expectNextMatches { it.content.isNotEmpty() }
                 .verifyComplete()
     }
 
@@ -247,7 +247,7 @@ class GetSportReservationServiceTest {
         )
 
         StepVerifier.create(reservesWithPage)
-                .expectNextMatches { it.reservations.isNotEmpty() }
+                .expectNextMatches { it.content.isNotEmpty() }
                 .verifyComplete()
     }
 }

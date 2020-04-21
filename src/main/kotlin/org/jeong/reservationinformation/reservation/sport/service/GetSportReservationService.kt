@@ -1,9 +1,11 @@
 package org.jeong.reservationinformation.reservation.sport.service
 
+import org.jeong.reservationinformation.common.domain.PageInfo
+import org.jeong.reservationinformation.common.domain.PaginatedObject
 import org.jeong.reservationinformation.common.util.PageUtil
 import org.jeong.reservationinformation.reservation.sport.domain.enums.SportCategory
 import org.jeong.reservationinformation.reservation.sport.domain.vo.ListPublicReservationSportResponseVo
-import org.jeong.reservationinformation.reservation.sport.domain.vo.SportReservationsResponseVo
+import org.jeong.reservationinformation.reservation.sport.domain.vo.PublicReservationSportVo
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
@@ -23,7 +25,7 @@ class GetSportReservationService(
         const val baseUrl = "http://openAPI.seoul.go.kr:8088/{key}/json/ListPublicReservationSport"
     }
 
-    fun getReservationsWithPage(category: String, page: Int, size: Int): Mono<SportReservationsResponseVo> =
+    fun getReservationsWithPage(category: String, page: Int, size: Int): Mono<PaginatedObject<PublicReservationSportVo>> =
             WebClient.builder()
                     .baseUrl(baseUrl
                             .replace("{key}", key)
@@ -44,19 +46,38 @@ class GetSportReservationService(
                     .bodyToMono(ListPublicReservationSportResponseVo::class.java)
                     .map {
                         when (it.ListPublicReservationSport == null) {
-                            true -> SportReservationsResponseVo(
-                                    hasNext = false,
-                                    reservations = listOf()
+                            true -> PaginatedObject(
+                                    pageInfo = PageInfo(
+                                            hasNext = false,
+                                            isFirst = false,
+                                            isLast = false,
+                                            numberOfElements = 0,
+                                            totalCount = 0,
+                                            lastPage = 0,
+                                            firstPage = 0
+                                    ),
+                                    content = listOf()
                             )
 
-                            false -> SportReservationsResponseVo(
-                                    hasNext = it.ListPublicReservationSport.list_total_count > page * size,
-                                    reservations = it.ListPublicReservationSport.row,
-                                    lastPage = pageUtil.getLastPage(
-                                            totalCount = it.ListPublicReservationSport.list_total_count,
-                                            size = size
-                                    )
-                            )
+                            false -> {
+                                val lastPage = pageUtil.getLastPage(
+                                        totalCount = it.ListPublicReservationSport.list_total_count,
+                                        size = size
+                                )
+
+                                PaginatedObject(
+                                        pageInfo = PageInfo(
+                                                hasNext = it.ListPublicReservationSport.list_total_count > page * size,
+                                                totalCount = it.ListPublicReservationSport.list_total_count,
+                                                isFirst = page == 1,
+                                                isLast = page == lastPage,
+                                                numberOfElements = it.ListPublicReservationSport.row.size,
+                                                lastPage = lastPage,
+                                                firstPage = 1
+                                        ),
+                                        content = it.ListPublicReservationSport.row
+                                )
+                            }
                         }
                     }
 }
