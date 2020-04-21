@@ -17,7 +17,7 @@ api:
 ~~~
 ---
 
-체육시설 예약 목록 조회
+체육 시설 예약 목록 조회
 ~~~
 http://localhost:8080/sport/reservations?size=한번에 조회할 데이터 크기&page=조회할 페이지&category={ALL, SOCCER_STADIUM, FUTSAL_STADIUM,
 TENNIS_COURT, FOOTBALL_COURT, BASKETBALL_COURT, MULTIPURPOSE_STADIUM, VOLLEYBALL_COURT, BADMINTON_COURT, FUTSAL, PLAYGROUND, GYM, TABLE_TENNIS_COURT,
@@ -93,3 +93,5 @@ response example:
     }
 }
 ~~~
+
+문화 시설 예약 목록 조회
