@@ -24,6 +24,7 @@ TENNIS_COURT, FOOTBALL_COURT, BASKETBALL_COURT, MULTIPURPOSE_STADIUM, VOLLEYBALL
 PARK_GOLF_COURSE}
 ~~~
 request example:
+
 GET http://localhost:8080/sport/reservations?size=2&page=1&category=ALL 
 
 response example: 
@@ -94,4 +95,81 @@ response example:
 }
 ~~~
 
-문화 시설 예약 목록 조회
+체육 시설 후기 조회
+
+~~~
+GET http://localhost:8080/sport/reservation/comments?svcId={체육 시설 svcid}
+~~~
+
+request example: 
+
+GET http://localhost:8080/sport/reservation/comments?svcId=S200102152019666829
+
+response example:
+~~~
+[
+    {
+        "id": "5e9fec66161eea2327b3f6da",
+        "svcId": "S200102152019666829",
+        "userName": "tester",
+        "rating": 4,
+        "comment": "좋아요",
+        "registerDate": "2020-04-22T07:04:06.453+0000",
+        "updateDate": "2020-04-22T07:04:06.453+0000"
+    },
+    {
+        "id": "5e981f7f5e225d2d28f02449",
+        "svcId": "S200102152019666829",
+        "userName": "tester",
+        "rating": 5,
+        "comment": "test comment",
+        "registerDate": "2020-04-16T09:03:58.934+0000",
+        "updateDate": "2020-04-16T09:03:58.934+0000"
+    }
+]
+~~~
+
+체육 시설 후기 등록
+
+~~~
+POST http://localhost:8080/sport/reservation/comment
+
+body {
+   "svcId": "{예약 정보 svcid}",
+   "userName" : "{후기 등록할 닉네임}",
+   "password": "{후기 등록후 수정/삭제를 위한 password}",
+   "rating": {1~5 별점},
+   "comment": "{후기 내용}" 
+}
+~~~
+
+request example: 
+
+POST http://localhost:8080/sport/reservation/comment
+~~~
+body : {
+       	    "svcId": "S200102152019666829",
+               "userName" : "tester",
+               "password": "123123",
+               "rating": 3,
+               "comment": "보통이에요"
+       }
+~~~
+
+response example: 
+~~~
+{
+    "id": "5e9fee7e161eea2327b3f6db",
+    "svcId": "S200102152019666829",
+    "userName": "tester",
+    "rating": 3,
+    "comment": "보통이에요",
+    "registerDate": "2020-04-22T07:13:02.795+0000",
+    "updateDate": "2020-04-22T07:13:02.795+0000"
+}
+~~~
+
+TODO 체육 시설 후기 삭제 및 수정 문서 작성,
+문화 시설 예약 조회및 시설 후기 조회, 등록, 삭제 및 수정 문서 작성,
+게시판 기능 구현
+  
