@@ -12,5 +12,4 @@ interface PostCrudService {
     fun updatePost(updatePostVo: UpdatePostVo): Mono<PostVo>
     fun deletePost(id: String): Mono<Void>
     fun getPost(id: String): Mono<PostVo>
-    fun getPostsWithPaging(pageable: Pageable): Mono<PaginatedObject<PostVo>>
 }

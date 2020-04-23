@@ -1,7 +1,6 @@
 package org.jeong.reservationinformation.community.repository
 
 import org.jeong.reservationinformation.community.domain.document.Post
-import org.jeong.reservationinformation.community.domain.document.PostComment
 import org.jeong.reservationinformation.community.domain.enums.PostCategory
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -16,9 +15,6 @@ class PostRepositoryTest {
 
     @Autowired
     lateinit var postRepository: PostRepository
-
-    @Autowired
-    lateinit var postCommentRepository: PostCommentRepository
 
     @BeforeEach
     fun beforeTest() {

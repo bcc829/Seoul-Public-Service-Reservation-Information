@@ -125,25 +125,4 @@ class PostCrudServiceTest {
                 .verifyError(NoSuchElementException::class.java)
     }
 
-    @Test
-    fun getPostsWithPaging() {
-
-        val id = postCrudService.insertPost(InsertPostVo(
-                content = "test1232",
-                title = "test title",
-                userName = "tester2",
-                postCategory = PostCategory.SOCCER,
-                password = "test124"
-        )).block()!!.id
-
-        val data = postCrudService.getPostsWithPaging(
-                pageable = PageRequest.of(0, 2, Sort.by("registerDate").descending())
-        )
-
-        StepVerifier
-                .create(data)
-                .expectNextMatches { it.pageInfo.numberOfElements == 2 && it.content.first().id == id }
-                .verifyComplete()
-    }
-
 }

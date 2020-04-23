@@ -1,14 +1,6 @@
 spring:
   main:
     allow-bean-definition-overriding: true
-
-  data:
-    web:
-      pageable:
-        one-indexed-parameters: true
-        default-page-size: 10
-        max-page-size: 1000
-
 ---
 spring:
   profiles: local
