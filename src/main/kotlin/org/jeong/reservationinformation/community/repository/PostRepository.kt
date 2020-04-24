@@ -12,21 +12,25 @@ import reactor.core.publisher.Mono
 interface PostRepository : ReactiveMongoRepository<Post, String> {
     fun findByIdNotNull(pageable: Pageable): Flux<Post>
 
-    fun findAllByContentLikeAndPostCategory(pageable: Pageable, searchKeyword: String, category: PostCategory)
+    fun findAllByPostCategory(pageable: Pageable, postCategory: PostCategory): Flux<Post>
+
+    fun countAllByPostCategory(postCategory: PostCategory): Mono<Long>
+
+    fun findAllByContentLikeAndPostCategory(pageable: Pageable, searchKeyword: String, postCategory: PostCategory)
             : Flux<Post>
 
-    fun countAllByContentLikeAndPostCategory(searchKeyword: String, category: PostCategory)
+    fun countAllByContentLikeAndPostCategory(searchKeyword: String, postCategory: PostCategory)
             : Mono<Long>
 
-    fun findAllByTitleLikeAndPostCategory(pageable: Pageable, searchKeyword: String, category: PostCategory)
+    fun findAllByTitleLikeAndPostCategory(pageable: Pageable, searchKeyword: String, postCategory: PostCategory)
             : Flux<Post>
 
-    fun countAllByTitleLikeAndPostCategory(searchKeyword: String, category: PostCategory)
+    fun countAllByTitleLikeAndPostCategory(searchKeyword: String, postCategory: PostCategory)
             : Mono<Long>
 
     fun findAllByUserNameLikeAndPostCategory(pageable: Pageable, searchKeyword: String, postCategory: PostCategory)
             : Flux<Post>
 
-    fun countAllByUserNameLikeAndPostCategory(searchKeyword: String, category: PostCategory)
+    fun countAllByUserNameLikeAndPostCategory(searchKeyword: String, postCategory: PostCategory)
             : Mono<Long>
 }

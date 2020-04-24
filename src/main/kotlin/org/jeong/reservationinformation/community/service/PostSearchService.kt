@@ -8,7 +8,11 @@ import reactor.core.publisher.Mono
 
 interface PostSearchService {
     fun findPostsAllWithPaging(pageable: Pageable): Mono<PaginatedObject<PostVo>>
-    fun findPostsByTitleLikeAndCategoryWithPaging(pageable: Pageable, title: String, category: PostCategory)
-    fun findPostsByContentLikeAndCategoryWithPaging(pageable: Pageable, content: String, category: PostCategory)
-    fun findPostsByUserNameLikeAndCategoryWithPaging(pageable: Pageable, userName: String, category: PostCategory)
+    fun findPostsByCategory(pageable: Pageable, postCategory: PostCategory): Mono<PaginatedObject<PostVo>>
+    fun findPostsByTitleLikeAndCategoryWithPaging(pageable: Pageable, title: String, postCategory: PostCategory)
+            : Mono<PaginatedObject<PostVo>>
+    fun findPostsByContentLikeAndCategoryWithPaging(pageable: Pageable, content: String, postCategory: PostCategory)
+            : Mono<PaginatedObject<PostVo>>
+    fun findPostsByUserNameLikeAndCategoryWithPaging(pageable: Pageable, userName: String, postCategory: PostCategory)
+            : Mono<PaginatedObject<PostVo>>
 }
