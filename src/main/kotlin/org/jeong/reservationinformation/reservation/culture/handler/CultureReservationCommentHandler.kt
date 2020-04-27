@@ -28,11 +28,15 @@ class CultureReservationCommentHandler(
     fun insertComment(request: ServerRequest): Mono<ServerResponse> =
             request.bodyToMono(InsertReservationCommentVo::class.java)
                     .flatMap {
-                        ok()
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .body(cultureReservationCommentCrudService.insertCultureReservationComment(
-                                        insertReservationCommentVo = it
-                                ), ReservationCommentVo::class.java)
+                        if (it.rating !in 1..5) {
+                            Mono.error(InvalidParameterException("The rating is between 1 and 5"))
+                        } else {
+                            ok()
+                                    .contentType(MediaType.APPLICATION_JSON)
+                                    .body(cultureReservationCommentCrudService.insertCultureReservationComment(
+                                            insertReservationCommentVo = it
+                                    ), ReservationCommentVo::class.java)
+                        }
                     }.switchIfEmpty(
                             Mono.error(InvalidParameterException("request body is not exist"))
                     )
@@ -40,11 +44,15 @@ class CultureReservationCommentHandler(
     fun updateComment(request: ServerRequest): Mono<ServerResponse> =
             request.bodyToMono(UpdateReservationCommentVo::class.java)
                     .flatMap {
-                        ok()
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .body(cultureReservationCommentCrudService.updateCultureReservationComment(
-                                        updateReservationCommentVo = it
-                                ), ReservationCommentVo::class.java)
+                        if (it.rating !in 1..5) {
+                            Mono.error(InvalidParameterException("The rating is between 1 and 5"))
+                        } else {
+                            ok()
+                                    .contentType(MediaType.APPLICATION_JSON)
+                                    .body(cultureReservationCommentCrudService.updateCultureReservationComment(
+                                            updateReservationCommentVo = it
+                                    ), ReservationCommentVo::class.java)
+                        }
                     }.switchIfEmpty(
                             Mono.error(InvalidParameterException("request body is not exist"))
                     )

@@ -137,16 +137,15 @@ POST http://localhost:8080/sport/reservation/comment
 body {
    "svcId": "{예약 정보 svcid}",
    "userName" : "{후기 등록할 닉네임}",
-   "password": "{후기 등록후 수정/삭제를 위한 password}",
+   "password": "{후기 등록 후 수정/삭제를 위한 password}",
    "rating": {1~5 별점},
    "comment": "{후기 내용}" 
 }
 ~~~
 
 request example: 
-
-POST http://localhost:8080/sport/reservation/comment
 ~~~
+POST http://localhost:8080/sport/reservation/comment
 body : {
        	    "svcId": "S200102152019666829",
                "userName" : "tester",
@@ -169,7 +168,62 @@ response example:
 }
 ~~~
 
-TODO 체육 시설 후기 삭제 및 수정 문서 작성,
-문화 시설 예약 조회및 시설 후기 조회, 등록, 삭제 및 수정 문서 작성,
+체육 시설 후기 수정
+
+~~~
+PUT http://localhost:8080/sport/reservation/comment
+
+body : {
+            "id": "{id}",
+            "password": "{후기 등록 후 수정/삭제를 위한 password}",
+            "rating": {1~5 별점},
+            "comment": "{후기 내용}"
+        }
+~~~
+
+request example:
+~~~
+PUT http://localhost:8080/sport/reservation/comment
+
+body: {
+            "id": "5e9fee7e161eea2327b3f6db",
+      	    "password": "123123",
+            "rating": 4,
+            "comment": "괜찮아요"
+      }
+
+~~~
+response example: 
+~~~
+{
+    "id": "5e9fee7e161eea2327b3f6db",
+    "svcId": "S200102152019666829",
+    "userName": "tester",
+    "rating": 4,
+    "comment": "괜찮아요",
+    "registerDate": "2020-04-22T07:13:02.795+0000",
+    "updateDate": "2020-04-27T05:15:34.186+0000"
+}
+~~~
+
+체육 시설 후기 삭제
+
+~~~
+DELETE http://localhost:8080/sport/reservation/comment?password={후기 등록 후 수정/삭제를 위한 password}&id={id}
+~~~
+
+request example: 
+
+~~~
+DELETE http://localhost:8080/sport/reservation/comment?password=123123&id=5e9fee7e161eea2327b3f6db
+~~~
+
+response example: 
+~~~
+
+~~~
+
+
+TODO 문화 시설 예약 조회및 시설 후기 조회, 등록, 삭제 및 수정 문서 작성,
 게시판 기능 구현
   

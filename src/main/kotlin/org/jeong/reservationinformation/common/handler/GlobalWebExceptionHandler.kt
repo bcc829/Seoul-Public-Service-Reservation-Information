@@ -1,4 +1,4 @@
-package org.jeong.reservationinformation.reservation.common.handler
+package org.jeong.reservationinformation.common.handler
 
 import org.springframework.boot.web.reactive.error.ErrorWebExceptionHandler
 import org.springframework.core.annotation.Order

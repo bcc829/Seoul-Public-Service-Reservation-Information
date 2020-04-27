@@ -10,6 +10,7 @@ import org.springframework.web.reactive.function.server.ServerRequest
 import org.springframework.web.reactive.function.server.ServerResponse
 import org.springframework.web.reactive.function.server.ServerResponse.ok
 import reactor.core.publisher.Mono
+import java.lang.IllegalArgumentException
 import java.security.InvalidParameterException
 
 @Component
@@ -28,11 +29,15 @@ class SportReservationCommentHandler(
     fun insertComment(request: ServerRequest): Mono<ServerResponse> =
             request.bodyToMono(InsertReservationCommentVo::class.java)
                     .flatMap {
-                        ok()
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .body(sportReservationCommentCrudService.insertSportReservationComment(
-                                        insertReservationCommentVo = it
-                                ), ReservationCommentVo::class.java)
+                        if (it.rating !in 1..5) {
+                            Mono.error(InvalidParameterException("rating is between 1 and 5"))
+                        } else {
+                            ok()
+                                    .contentType(MediaType.APPLICATION_JSON)
+                                    .body(sportReservationCommentCrudService.insertSportReservationComment(
+                                            insertReservationCommentVo = it
+                                    ), ReservationCommentVo::class.java)
+                        }
                     }.switchIfEmpty(
                             Mono.error(InvalidParameterException("request body is not exist"))
                     )
@@ -41,14 +46,19 @@ class SportReservationCommentHandler(
     fun updateComment(request: ServerRequest): Mono<ServerResponse> =
             request.bodyToMono(UpdateReservationCommentVo::class.java)
                     .flatMap {
-                        ok()
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .body(sportReservationCommentCrudService.updateSportReservationComment(
-                                        updateReservationCommentVo = it
-                                ), ReservationCommentVo::class.java)
+                        if (it.rating !in 1..5) {
+                            Mono.error(InvalidParameterException("The rating is between 1 and 5"))
+                        } else {
+                            ok()
+                                    .contentType(MediaType.APPLICATION_JSON)
+                                    .body(sportReservationCommentCrudService.updateSportReservationComment(
+                                            updateReservationCommentVo = it
+                                    ), ReservationCommentVo::class.java)
+                        }
                     }.switchIfEmpty(
                             Mono.error(InvalidParameterException("request body is not exist"))
                     )
+
 
     fun deleteComment(request: ServerRequest): Mono<ServerResponse> =
             ok()
