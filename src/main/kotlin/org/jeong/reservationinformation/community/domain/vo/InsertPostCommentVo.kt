@@ -1,12 +1,19 @@
 package org.jeong.reservationinformation.community.domain.vo
 
-import java.util.*
+import org.jeong.reservationinformation.community.domain.document.PostComment
 
 data class InsertPostCommentVo(
         val postId: String,
         val userName: String,
         val password: String,
-        val comment: String,
-        val registerDate: Date,
-        val updateDate: Date
-)
+        val comment: String
+) {
+    fun toPostComment(): PostComment {
+        return PostComment(
+                postId = postId,
+                userName = userName,
+                comment = comment,
+                password = password
+        )
+    }
+}

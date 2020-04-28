@@ -1,4 +1,4 @@
-package org.jeong.reservationinformation.community.service
+package org.jeong.reservationinformation.community.service.post
 
 import org.jeong.reservationinformation.community.domain.document.Post
 import org.jeong.reservationinformation.community.domain.enums.PostCategory

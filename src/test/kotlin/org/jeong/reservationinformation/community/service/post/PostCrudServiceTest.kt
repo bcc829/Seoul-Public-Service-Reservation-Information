@@ -1,4 +1,4 @@
-package org.jeong.reservationinformation.community.service
+package org.jeong.reservationinformation.community.service.post
 
 import org.jeong.reservationinformation.community.domain.document.Post
 import org.jeong.reservationinformation.community.domain.enums.PostCategory
@@ -8,8 +8,6 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.data.domain.PageRequest
-import org.springframework.data.domain.Sort
 import reactor.test.StepVerifier
 
 @SpringBootTest

@@ -1,4 +1,4 @@
-package org.jeong.reservationinformation.community.service
+package org.jeong.reservationinformation.community.service.comment
 
 import org.jeong.reservationinformation.common.domain.PaginatedObject
 import org.jeong.reservationinformation.community.domain.vo.InsertPostCommentVo
@@ -11,5 +11,5 @@ interface PostCommentCrudService {
     fun insertPostComment(insertPostCommentVo: InsertPostCommentVo): Mono<PostCommentVo>
     fun updatePostComment(updatePostCommentVo: UpdatePostCommentVo): Mono<PostCommentVo>
     fun deletePostComment(id: String): Mono<Void>
-    fun getPostCommentWithPaging(pageable: Pageable): Mono<PaginatedObject<PostCommentVo>>
+    fun getPostCommentsByPostIdWithPaging(pageable: Pageable, postId: String): Mono<PaginatedObject<PostCommentVo>>
 }

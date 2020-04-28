@@ -1,10 +1,11 @@
-package org.jeong.reservationinformation.community.service
+package org.jeong.reservationinformation.community.service.post
 
 import org.jeong.reservationinformation.common.util.PageUtil
 import org.jeong.reservationinformation.community.domain.vo.InsertPostVo
 import org.jeong.reservationinformation.community.domain.vo.PostVo
 import org.jeong.reservationinformation.community.domain.vo.UpdatePostVo
 import org.jeong.reservationinformation.community.repository.PostRepository
+import org.jeong.reservationinformation.community.service.post.PostCrudService
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
 
