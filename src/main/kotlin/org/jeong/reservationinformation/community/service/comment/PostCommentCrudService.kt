@@ -10,6 +10,6 @@ import reactor.core.publisher.Mono
 interface PostCommentCrudService {
     fun insertPostComment(insertPostCommentVo: InsertPostCommentVo): Mono<PostCommentVo>
     fun updatePostComment(updatePostCommentVo: UpdatePostCommentVo): Mono<PostCommentVo>
-    fun deletePostComment(id: String): Mono<Void>
+    fun deletePostComment(id: String, password: String): Mono<Void>
     fun getPostCommentsByPostIdWithPaging(pageable: Pageable, postId: String): Mono<PaginatedObject<PostCommentVo>>
 }

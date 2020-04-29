@@ -32,8 +32,15 @@ class PostCrudReactiveMongoServiceImpl(val postRepository: PostRepository,
                         it.toPostVo()
                     }.switchIfEmpty(Mono.error(NoSuchElementException("${updatePostVo.id} is not exist")))
 
-    override fun deletePost(id: String): Mono<Void> =
-            postRepository.deleteById(id)
+    override fun deletePost(id: String, password: String): Mono<Void> =
+            postRepository.findById(id)
+                    .flatMap {
+                        if (it.password == password) {
+                            postRepository.deleteById(id)
+                        } else {
+                            Mono.error(IllegalAccessException("password is not matching"))
+                        }
+                    }
 
     override fun getPost(id: String): Mono<PostVo> =
             postRepository.findById(id)

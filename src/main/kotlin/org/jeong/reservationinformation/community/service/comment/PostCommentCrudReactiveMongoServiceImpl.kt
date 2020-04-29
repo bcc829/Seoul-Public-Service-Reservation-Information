@@ -33,8 +33,15 @@ class PostCommentCrudReactiveMongoServiceImpl(
                         it.toPostCommentVo()
                     }.switchIfEmpty(Mono.error(NoSuchElementException("${updatePostCommentVo.id} is not exist")))
 
-    override fun deletePostComment(id: String): Mono<Void> =
-            postCommentRepository.deleteById(id)
+    override fun deletePostComment(id: String, password: String): Mono<Void> =
+            postCommentRepository.findById(id)
+                    .flatMap {
+                        if(it.password == password) {
+                            postCommentRepository.deleteById(id)
+                        } else {
+                            Mono.error(IllegalAccessException("password is not matching"))
+                        }
+                    }
 
     override fun getPostCommentsByPostIdWithPaging(pageable: Pageable, postId: String): Mono<PaginatedObject<PostCommentVo>> {
         val totalCount = postCommentRepository.countAllByPostId(postId)

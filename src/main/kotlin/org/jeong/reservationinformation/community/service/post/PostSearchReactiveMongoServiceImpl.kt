@@ -24,7 +24,7 @@ class PostSearchReactiveMongoServiceImpl(val postRepository: PostRepository,
                             .collectList()
             )
 
-    override fun findPostsByCategory(pageable: Pageable, postCategory: PostCategory)
+    override fun findPostsByCategoryWithPaging(pageable: Pageable, postCategory: PostCategory)
             : Mono<PaginatedObject<PostVo>> =
         pageUtil.makePagingObjectPublisher(
                 pageable = pageable,
