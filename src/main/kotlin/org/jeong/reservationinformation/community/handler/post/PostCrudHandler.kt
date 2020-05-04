@@ -40,7 +40,7 @@ class PostCrudHandler(val postCrudService: PostCrudService, val postSearchServic
                                     .orElseThrow { IllegalArgumentException("id is not exist") },
                             password = request.queryParam("id")
                                     .orElseThrow { IllegalArgumentException("password is not exist") }
-                            ), PostVo::class.java)
+                            ), Void::class.java)
 
     fun getPost(request: ServerRequest): Mono<ServerResponse> =
             ok()

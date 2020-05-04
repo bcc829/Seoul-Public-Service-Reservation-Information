@@ -2,8 +2,11 @@ package org.jeong.reservationinformation.common.util
 
 import org.jeong.reservationinformation.common.domain.PageInfo
 import org.jeong.reservationinformation.common.domain.PaginatedObject
+import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
+import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Component
+import org.springframework.web.reactive.function.server.ServerRequest
 import reactor.core.publisher.Mono
 import kotlin.math.ceil
 
@@ -17,6 +20,18 @@ class PageUtil {
         val endIndex = page * size
 
         return "/$startIndex/$endIndex/"
+    }
+
+    fun makePageRequest(request: ServerRequest): Pageable {
+        var size = request.queryParam("size").orElse("10").toInt()
+        val page = request.queryParam("page").orElse("1").toInt() - 1
+        val sort = Sort.by(Sort.Order.desc("regDate"))
+
+        if (size > 100) {
+            size = 100
+        }
+
+        return PageRequest.of(size, page, sort)
     }
 
     fun <T> makePagingObjectPublisher(pageable: Pageable, monoTotalCount: Mono<Long>, monoPageContents: Mono<List<T>>)

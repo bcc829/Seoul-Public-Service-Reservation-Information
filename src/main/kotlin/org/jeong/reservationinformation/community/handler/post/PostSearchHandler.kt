@@ -1,6 +1,7 @@
 package org.jeong.reservationinformation.community.handler.post
 
 import org.jeong.reservationinformation.common.domain.PaginatedObject
+import org.jeong.reservationinformation.common.util.PageUtil
 import org.jeong.reservationinformation.community.domain.enums.PostCategory
 import org.jeong.reservationinformation.community.domain.vo.PostVo
 import org.jeong.reservationinformation.community.service.post.PostSearchService
@@ -16,13 +17,13 @@ import reactor.core.publisher.Mono
 import java.lang.IllegalArgumentException
 
 @Component
-class PostSearchHandler(val postSearchService: PostSearchService) {
+class PostSearchHandler(val postSearchService: PostSearchService, val pageUtil: PageUtil) {
 
     fun getPostsWithPaging(request: ServerRequest): Mono<ServerResponse> =
             ok()
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(
-                            postSearchService.findPostsAllWithPaging(pageable = makePageRequest(request)),
+                            postSearchService.findPostsAllWithPaging(pageable = pageUtil.makePageRequest(request)),
                             PaginatedObject::class.java
                     )
 
@@ -31,7 +32,7 @@ class PostSearchHandler(val postSearchService: PostSearchService) {
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(
                             postSearchService.findPostsByCategoryWithPaging(
-                                    pageable = makePageRequest(request),
+                                    pageable = pageUtil.makePageRequest(request),
                                     postCategory = PostCategory.valueOf(
                                             request.queryParam("category")
                                                     .orElseThrow { IllegalArgumentException("category is missing") }
@@ -47,7 +48,7 @@ class PostSearchHandler(val postSearchService: PostSearchService) {
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(
                             postSearchService.findPostsByContentLikeAndCategoryWithPaging(
-                                    pageable = makePageRequest(request),
+                                    pageable = pageUtil.makePageRequest(request),
                                     postCategory = PostCategory.valueOf(
                                             request.queryParam("category")
                                                     .orElseThrow { IllegalArgumentException("category is missing") }
@@ -65,7 +66,7 @@ class PostSearchHandler(val postSearchService: PostSearchService) {
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(
                             postSearchService.findPostsByTitleLikeAndCategoryWithPaging(
-                                    pageable = makePageRequest(request),
+                                    pageable = pageUtil.makePageRequest(request),
                                     postCategory = PostCategory.valueOf(
                                             request.queryParam("category")
                                                     .orElseThrow { IllegalArgumentException("category is missing") }
@@ -82,7 +83,7 @@ class PostSearchHandler(val postSearchService: PostSearchService) {
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(
                             postSearchService.findPostsByUserNameLikeAndCategoryWithPaging(
-                                    pageable = makePageRequest(request),
+                                    pageable = pageUtil.makePageRequest(request),
                                     postCategory = PostCategory.valueOf(
                                             request.queryParam("category")
                                                     .orElseThrow { IllegalArgumentException("category is missing") }
@@ -94,16 +95,4 @@ class PostSearchHandler(val postSearchService: PostSearchService) {
                             PaginatedObject::class.java
                     )
 
-
-    private fun makePageRequest(request: ServerRequest): Pageable {
-        var size = request.queryParam("size").orElse("10").toInt()
-        val page = request.queryParam("page").orElse("1").toInt() - 1
-        val sort = Sort.by(Sort.Order.desc("regDate"))
-
-        if (size > 100) {
-            size = 100
-        }
-
-        return PageRequest.of(size, page, sort)
-    }
 }
