@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono
 import java.security.InvalidParameterException
 
 @Component
-class PostCrudHandler(val postCrudService: PostCrudService, val postSearchService: PostSearchService) {
+class PostCrudHandler(val postCrudService: PostCrudService) {
 
     fun insertPost(request: ServerRequest): Mono<ServerResponse> =
             request.bodyToMono(InsertPostVo::class.java)

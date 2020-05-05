@@ -21,7 +21,7 @@ class PostRepositoryTest {
         postRepository.deleteAll().block()
 
         postRepository.save(Post(
-                userName = "tester",
+                username = "tester",
                 password = "test",
                 content = "test contents",
                 title = "title!",
@@ -29,7 +29,7 @@ class PostRepositoryTest {
         )).block()
 
         postRepository.save(Post(
-                userName = "tester",
+                username = "tester",
                 password = "test",
                 content = "test contents2",
                 title = "title2!",
@@ -37,7 +37,7 @@ class PostRepositoryTest {
         )).block()!!
 
         postRepository.save(Post(
-                userName = "manager",
+                username = "manager",
                 password = "test",
                 content = "manager contents2",
                 title = "manager!",
@@ -82,7 +82,7 @@ class PostRepositoryTest {
         val pageRequest = PageRequest.of(0, 10, Sort.by("registerDate").descending())
 
         val data = postRepository
-                .findAllByUserNameLikeAndPostCategory(pageRequest, "manager", PostCategory.SOCCER)
+                .findAllByUsernameLikeAndPostCategory(pageRequest, "manager", PostCategory.SOCCER)
 
         StepVerifier
                 .create(data)

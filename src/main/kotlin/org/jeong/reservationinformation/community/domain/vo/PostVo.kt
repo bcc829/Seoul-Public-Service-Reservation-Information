@@ -5,7 +5,7 @@ import java.util.*
 
 data class PostVo(
         val id: String,
-        val userName: String,
+        val username: String,
         val postCategory: PostCategory,
         val title: String,
         val content: String,

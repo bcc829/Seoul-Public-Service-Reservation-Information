@@ -111,7 +111,7 @@ class PostCommentCrudServiceTest {
                 )
         ).block()!!
 
-        postCommentCrudService.deletePostComment(postComment.id!!).block()
+        postCommentCrudService.deletePostComment(postComment.id!!, postComment.password).block()
 
         val data = postCommentRepository.count()
 

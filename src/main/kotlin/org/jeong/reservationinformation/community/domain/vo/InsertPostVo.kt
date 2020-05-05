@@ -12,7 +12,7 @@ data class InsertPostVo(
 ) {
     fun toPost(): Post {
         return Post(
-                userName = userName,
+                username = userName,
                 password = password,
                 postCategory = postCategory,
                 title = title,

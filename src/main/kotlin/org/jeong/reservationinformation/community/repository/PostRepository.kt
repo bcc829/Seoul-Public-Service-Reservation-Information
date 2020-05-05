@@ -28,9 +28,9 @@ interface PostRepository : ReactiveMongoRepository<Post, String> {
     fun countAllByTitleLikeAndPostCategory(searchKeyword: String, postCategory: PostCategory)
             : Mono<Long>
 
-    fun findAllByUserNameLikeAndPostCategory(pageable: Pageable, searchKeyword: String, postCategory: PostCategory)
+    fun findAllByUsernameLikeAndPostCategory(pageable: Pageable, searchKeyword: String, postCategory: PostCategory)
             : Flux<Post>
 
-    fun countAllByUserNameLikeAndPostCategory(searchKeyword: String, postCategory: PostCategory)
+    fun countAllByUsernameLikeAndPostCategory(searchKeyword: String, postCategory: PostCategory)
             : Mono<Long>
 }

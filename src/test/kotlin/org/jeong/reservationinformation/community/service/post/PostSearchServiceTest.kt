@@ -30,7 +30,7 @@ class PostSearchServiceTest {
                 Post(
                         content = "난 사과 좋아함",
                         title = "사과 좋아함",
-                        userName = "apple",
+                        username = "apple",
                         postCategory = PostCategory.SOCCER,
                         password = "test124"
                 )
@@ -40,7 +40,7 @@ class PostSearchServiceTest {
                 Post(
                         content = "난 사과 싫어함",
                         title = "사과 싫어함",
-                        userName = "banana",
+                        username = "banana",
                         postCategory = PostCategory.SOCCER,
                         password = "test124"
                 )
@@ -50,7 +50,7 @@ class PostSearchServiceTest {
                 Post(
                         content = "포도",
                         title = "포도 좋아함",
-                        userName = "grape",
+                        username = "grape",
                         postCategory = PostCategory.SOCCER,
                         password = "test124"
                 )
@@ -60,7 +60,7 @@ class PostSearchServiceTest {
                 Post(
                         content = "농구임",
                         title = "농구 ㅋㅋ",
-                        userName = "basketman",
+                        username = "basketman",
                         postCategory = PostCategory.BASKETBALL,
                         password = "test124"
                 )
@@ -84,7 +84,7 @@ class PostSearchServiceTest {
 
     @Test
     fun findPostsByCategoryWithPagingTest() {
-        val data = postSearchService.findPostsByCategory(pageRequest, PostCategory.SOCCER)
+        val data = postSearchService.findPostsByCategoryWithPaging(pageRequest, PostCategory.SOCCER)
 
         StepVerifier
                 .create(data)

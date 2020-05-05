@@ -1,6 +1,6 @@
-package org.jeong.reservationinformation.config
+package org.jeong.reservationinformation.common.config
 
-import org.jeong.reservationinformation.util.Log
+import org.jeong.reservationinformation.common.util.Log
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.server.WebFilter

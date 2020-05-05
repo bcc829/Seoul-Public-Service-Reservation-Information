@@ -3,18 +3,13 @@ package org.jeong.reservationinformation.community.handler.post
 import org.jeong.reservationinformation.common.domain.PaginatedObject
 import org.jeong.reservationinformation.common.util.PageUtil
 import org.jeong.reservationinformation.community.domain.enums.PostCategory
-import org.jeong.reservationinformation.community.domain.vo.PostVo
 import org.jeong.reservationinformation.community.service.post.PostSearchService
-import org.springframework.data.domain.PageRequest
-import org.springframework.data.domain.Pageable
-import org.springframework.data.domain.Sort
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.server.ServerRequest
 import org.springframework.web.reactive.function.server.ServerResponse
 import org.springframework.web.reactive.function.server.ServerResponse.ok
 import reactor.core.publisher.Mono
-import java.lang.IllegalArgumentException
 
 @Component
 class PostSearchHandler(val postSearchService: PostSearchService, val pageUtil: PageUtil) {
@@ -34,8 +29,7 @@ class PostSearchHandler(val postSearchService: PostSearchService, val pageUtil: 
                             postSearchService.findPostsByCategoryWithPaging(
                                     pageable = pageUtil.makePageRequest(request),
                                     postCategory = PostCategory.valueOf(
-                                            request.queryParam("category")
-                                                    .orElseThrow { IllegalArgumentException("category is missing") }
+                                            request.pathVariable("category")
                                                     .toUpperCase()
                                     )
 
@@ -50,12 +44,11 @@ class PostSearchHandler(val postSearchService: PostSearchService, val pageUtil: 
                             postSearchService.findPostsByContentLikeAndCategoryWithPaging(
                                     pageable = pageUtil.makePageRequest(request),
                                     postCategory = PostCategory.valueOf(
-                                            request.queryParam("category")
-                                                    .orElseThrow { IllegalArgumentException("category is missing") }
+                                            request.pathVariable("category")
                                                     .toUpperCase()
                                     ),
-                                    content = request.queryParam("content")
-                                            .orElseThrow { IllegalArgumentException("content is missing") }
+                                    content = request.queryParam("keyword")
+                                            .orElseThrow { IllegalArgumentException("keyword is missing") }
                             ),
                             PaginatedObject::class.java
                     )
@@ -68,29 +61,27 @@ class PostSearchHandler(val postSearchService: PostSearchService, val pageUtil: 
                             postSearchService.findPostsByTitleLikeAndCategoryWithPaging(
                                     pageable = pageUtil.makePageRequest(request),
                                     postCategory = PostCategory.valueOf(
-                                            request.queryParam("category")
-                                                    .orElseThrow { IllegalArgumentException("category is missing") }
+                                            request.pathVariable("category")
                                                     .toUpperCase()
                                     ),
-                                    title = request.queryParam("title")
-                                            .orElseThrow { IllegalArgumentException("title is missing") }
+                                    title = request.queryParam("keyword")
+                                            .orElseThrow { IllegalArgumentException("keyword is missing") }
                             ),
                             PaginatedObject::class.java
                     )
 
-    fun getPostsByUserNameLikeAndPostCategory(request: ServerRequest): Mono<ServerResponse> =
+    fun getPostsByUsernameLikeAndPostCategory(request: ServerRequest): Mono<ServerResponse> =
             ok()
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(
                             postSearchService.findPostsByUserNameLikeAndCategoryWithPaging(
                                     pageable = pageUtil.makePageRequest(request),
                                     postCategory = PostCategory.valueOf(
-                                            request.queryParam("category")
-                                                    .orElseThrow { IllegalArgumentException("category is missing") }
+                                            request.pathVariable("category")
                                                     .toUpperCase()
                                     ),
-                                    userName = request.queryParam("userName")
-                                            .orElseThrow { IllegalArgumentException("userName is missing") }
+                                    username = request.queryParam("keyword")
+                                            .orElseThrow { IllegalArgumentException("keyword is missing") }
                             ),
                             PaginatedObject::class.java
                     )

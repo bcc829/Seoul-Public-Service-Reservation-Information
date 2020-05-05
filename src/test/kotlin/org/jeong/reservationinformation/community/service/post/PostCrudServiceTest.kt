@@ -28,7 +28,7 @@ class PostCrudServiceTest {
                 Post(
                         content = "test1243",
                         title = "test title",
-                        userName = "tester",
+                        username = "tester",
                         postCategory = PostCategory.SOCCER,
                         password = "test124"
                 )
@@ -38,7 +38,7 @@ class PostCrudServiceTest {
                 Post(
                         content = "test123",
                         title = "test title",
-                        userName = "tester1",
+                        username = "tester1",
                         postCategory = PostCategory.SOCCER,
                         password = "test124"
                 )
@@ -48,7 +48,7 @@ class PostCrudServiceTest {
                 Post(
                         content = "test1232",
                         title = "test title",
-                        userName = "tester2",
+                        username = "tester2",
                         postCategory = PostCategory.SOCCER,
                         password = "test124"
                 )
@@ -77,15 +77,15 @@ class PostCrudServiceTest {
 
     @Test
     fun deletePostTest() {
-        val id = postCrudService.insertPost(InsertPostVo(
+        val post = postCrudService.insertPost(InsertPostVo(
                 content = "test1232",
                 title = "test title",
                 userName = "tester2",
                 postCategory = PostCategory.SOCCER,
                 password = "test124"
-        )).block()!!.id
+        )).block()!!
 
-        postCrudService.deletePost(id).block()
+        postCrudService.deletePost(post.id, "test124").block()
 
         val data = postRepository.count()
 

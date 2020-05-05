@@ -5,7 +5,6 @@ import org.jeong.reservationinformation.common.util.PageUtil
 import org.jeong.reservationinformation.community.domain.enums.PostCategory
 import org.jeong.reservationinformation.community.domain.vo.PostVo
 import org.jeong.reservationinformation.community.repository.PostRepository
-import org.jeong.reservationinformation.community.service.post.PostSearchService
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
@@ -67,15 +66,15 @@ class PostSearchReactiveMongoServiceImpl(val postRepository: PostRepository,
                             .collectList()
             )
 
-    override fun findPostsByUserNameLikeAndCategoryWithPaging(pageable: Pageable, userName: String, postCategory: PostCategory)
+    override fun findPostsByUserNameLikeAndCategoryWithPaging(pageable: Pageable, username: String, postCategory: PostCategory)
             : Mono<PaginatedObject<PostVo>> =
             pageUtil.makePagingObjectPublisher(
                     pageable = pageable,
-                    monoTotalCount = postRepository.countAllByUserNameLikeAndPostCategory(userName, postCategory),
+                    monoTotalCount = postRepository.countAllByUsernameLikeAndPostCategory(username, postCategory),
                     monoPageContents = postRepository
-                            .findAllByUserNameLikeAndPostCategory(
+                            .findAllByUsernameLikeAndPostCategory(
                                     pageable = pageable,
-                                    searchKeyword = userName,
+                                    searchKeyword = username,
                                     postCategory = postCategory
                             )
                             .map { it.toPostVo() }

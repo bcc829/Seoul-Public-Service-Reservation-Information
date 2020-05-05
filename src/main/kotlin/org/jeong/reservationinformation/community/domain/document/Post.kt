@@ -5,7 +5,6 @@ import org.jeong.reservationinformation.community.domain.vo.PostVo
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.LastModifiedDate
-import org.springframework.data.mongodb.core.mapping.DBRef
 import org.springframework.data.mongodb.core.mapping.Document
 import java.util.*
 
@@ -13,7 +12,7 @@ import java.util.*
 data class Post(
         @Id
         val id: String? = null,
-        val userName: String,
+        val username: String,
         val password: String,
         val postCategory: PostCategory,
         var title: String,
@@ -27,7 +26,7 @@ data class Post(
         fun toPostVo(): PostVo {
                 return PostVo(
                         id = this.id!!,
-                        userName = userName,
+                        username = username,
                         content = content,
                         postCategory = postCategory,
                         title = title,

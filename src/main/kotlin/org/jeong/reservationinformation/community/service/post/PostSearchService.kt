@@ -13,6 +13,6 @@ interface PostSearchService {
             : Mono<PaginatedObject<PostVo>>
     fun findPostsByContentLikeAndCategoryWithPaging(pageable: Pageable, content: String, postCategory: PostCategory)
             : Mono<PaginatedObject<PostVo>>
-    fun findPostsByUserNameLikeAndCategoryWithPaging(pageable: Pageable, userName: String, postCategory: PostCategory)
+    fun findPostsByUserNameLikeAndCategoryWithPaging(pageable: Pageable, username: String, postCategory: PostCategory)
             : Mono<PaginatedObject<PostVo>>
 }
