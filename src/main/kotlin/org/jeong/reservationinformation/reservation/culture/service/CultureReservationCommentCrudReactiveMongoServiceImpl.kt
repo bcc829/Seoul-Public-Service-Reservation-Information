@@ -1,23 +1,31 @@
 package org.jeong.reservationinformation.reservation.culture.service
 
+import org.jeong.reservationinformation.common.domain.PaginatedObject
+import org.jeong.reservationinformation.common.util.PageUtil
 import org.jeong.reservationinformation.reservation.common.domain.vo.InsertReservationCommentVo
 import org.jeong.reservationinformation.reservation.common.domain.vo.ReservationCommentVo
 import org.jeong.reservationinformation.reservation.common.domain.vo.UpdateReservationCommentVo
 import org.jeong.reservationinformation.reservation.culture.domian.document.CultureReservationComment
 import org.jeong.reservationinformation.reservation.culture.repository.CultureReservationCommentReactiveRepository
+import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
-import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 @Service
 class CultureReservationCommentCrudReactiveMongoServiceImpl(
-        private val cultureReservationCommentReactiveRepository: CultureReservationCommentReactiveRepository
+        val cultureReservationCommentReactiveRepository: CultureReservationCommentReactiveRepository,
+        val pageUtil: PageUtil
 ) : CultureReservationCommentCrudService {
-    override fun getCultureReservationCommentBySvcId(svcId: String): Flux<ReservationCommentVo> =
-            cultureReservationCommentReactiveRepository.findByCultureReservationSvcIdOrderByRegisterDateDesc(svcId)
-                    .map {
-                        it.toReservationCommentVo()
-                    }
+
+    override fun getCultureReservationCommentBySvcIdWithPaging(pageable: Pageable, svcId: String): Mono<PaginatedObject<ReservationCommentVo>> {
+        val totalCount = cultureReservationCommentReactiveRepository.countByCultureReservationSvcId(svcId)
+        val contents = cultureReservationCommentReactiveRepository
+                .findAllByCultureReservationSvcId(pageable, svcId)
+                .map { it.toReservationCommentVo() }
+                .collectList()
+
+        return pageUtil.makePagingObjectPublisher(pageable, totalCount, contents)
+    }
 
     override fun insertCultureReservationComment(insertReservationCommentVo: InsertReservationCommentVo): Mono<ReservationCommentVo> =
             cultureReservationCommentReactiveRepository.save(CultureReservationComment(

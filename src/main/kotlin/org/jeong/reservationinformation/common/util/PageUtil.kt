@@ -25,13 +25,13 @@ class PageUtil {
     fun makePageRequest(request: ServerRequest): Pageable {
         var size = request.queryParam("size").orElse("10").toInt()
         val page = request.queryParam("page").orElse("1").toInt() - 1
-        val sort = Sort.by(Sort.Order.desc("regDate"))
+        val sort = Sort.by(Sort.Order.desc("registerDate"))
 
         if (size > 100) {
             size = 100
         }
 
-        return PageRequest.of(size, page, sort)
+        return PageRequest.of(page, size, sort)
     }
 
     fun <T> makePagingObjectPublisher(pageable: Pageable, monoTotalCount: Mono<Long>, monoPageContents: Mono<List<T>>)

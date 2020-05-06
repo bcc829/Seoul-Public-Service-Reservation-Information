@@ -1,5 +1,7 @@
 package org.jeong.reservationinformation.reservation.culture.handler
 
+import org.jeong.reservationinformation.common.domain.PaginatedObject
+import org.jeong.reservationinformation.common.util.PageUtil
 import org.jeong.reservationinformation.reservation.common.domain.vo.InsertReservationCommentVo
 import org.jeong.reservationinformation.reservation.common.domain.vo.ReservationCommentVo
 import org.jeong.reservationinformation.reservation.common.domain.vo.UpdateReservationCommentVo
@@ -14,16 +16,18 @@ import java.security.InvalidParameterException
 
 @Configuration
 class CultureReservationCommentHandler(
-        private val cultureReservationCommentCrudService: CultureReservationCommentCrudService
+        val cultureReservationCommentCrudService: CultureReservationCommentCrudService,
+        val pageUtil: PageUtil
 ) {
 
-    fun getCommentsBySvcId(request: ServerRequest): Mono<ServerResponse> =
+    fun getCommentsBySvcIdWithPaging(request: ServerRequest): Mono<ServerResponse> =
             ok()
                     .contentType(MediaType.APPLICATION_JSON)
-                    .body(cultureReservationCommentCrudService.getCultureReservationCommentBySvcId(
+                    .body(cultureReservationCommentCrudService.getCultureReservationCommentBySvcIdWithPaging(
+                            pageable = pageUtil.makePageRequest(request),
                             svcId = request.queryParam("svcId")
                                     .orElseThrow { InvalidParameterException("svcId is not exist") }
-                    ), ReservationCommentVo::class.java)
+                    ), PaginatedObject::class.java)
 
     fun insertComment(request: ServerRequest): Mono<ServerResponse> =
             request.bodyToMono(InsertReservationCommentVo::class.java)

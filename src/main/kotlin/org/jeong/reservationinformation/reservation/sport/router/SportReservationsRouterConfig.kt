@@ -25,7 +25,7 @@ class SportReservationsRouterConfig(
     fun getSportReservationCommentRouter() =
             nest(path("/sport/reservation"), router {
                 listOf(
-                        GET("/comments", sportReservationCommentHandler::getCommentsBySvcId),
+                        GET("/comments", sportReservationCommentHandler::getCommentsBySvcIdWithPaging),
                         POST("/comment", sportReservationCommentHandler::insertComment),
                         PUT("/comment", sportReservationCommentHandler::updateComment),
                         DELETE("/comment", sportReservationCommentHandler::deleteComment)

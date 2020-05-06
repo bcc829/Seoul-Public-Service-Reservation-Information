@@ -1,16 +1,16 @@
-package org.jeong.reservationinformation.reservation.culture.service
+package org.jeong.reservationinformation.reservation.sport.service
 
 import org.jeong.reservationinformation.reservation.common.domain.vo.InsertReservationCommentVo
 import org.jeong.reservationinformation.reservation.common.domain.vo.UpdateReservationCommentVo
 import org.jeong.reservationinformation.reservation.sport.domain.document.SportReservationComment
 import org.jeong.reservationinformation.reservation.sport.repository.SportReservationCommentReactiveRepository
-import org.jeong.reservationinformation.reservation.sport.service.SportReservationCommentCrudService
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.TestPropertySource
+import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.Sort
 import reactor.test.StepVerifier
 
 @SpringBootTest
@@ -62,13 +62,16 @@ class SportReservationCommentCrudServiceTest {
                 )
         ).block()
 
+        val pageRequest = PageRequest.of(0, 13, Sort.by("registerDate").descending())
+
         val data = sportReservationCommentCrudService
-                .getSportReservationCommentBySvcId("testSvcId")
+                .getSportReservationCommentBySvcIdWithPaging(pageRequest, "testSvcId")
 
         StepVerifier.create(data)
                 .assertNext {
-                    assertEquals("testSvcId", it.svcId)
-                    assertEquals("testComment", it.comment)
+                    assertEquals(1, it.pageInfo.numberOfElements)
+                    assertEquals("testSvcId", it.content[0].svcId)
+                    assertEquals("testComment", it.content[0].comment)
                 }
                 .verifyComplete()
     }

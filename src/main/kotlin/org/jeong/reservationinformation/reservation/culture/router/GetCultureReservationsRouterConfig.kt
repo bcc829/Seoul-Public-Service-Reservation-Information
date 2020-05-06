@@ -25,7 +25,7 @@ class GetCultureReservationsRouterConfig(
     fun getReservationCommentRouter() =
             nest(path("/culture/reservation"), router {
                 listOf(
-                        GET("/comments", cultureReservationCommentHandler::getCommentsBySvcId),
+                        GET("/comments", cultureReservationCommentHandler::getCommentsBySvcIdWithPaging),
                         POST("/comment", cultureReservationCommentHandler::insertComment),
                         PUT("/comment", cultureReservationCommentHandler::updateComment),
                         DELETE("/comment", cultureReservationCommentHandler::deleteComment)

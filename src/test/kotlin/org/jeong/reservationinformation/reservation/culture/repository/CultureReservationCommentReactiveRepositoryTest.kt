@@ -6,7 +6,8 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.TestPropertySource
+import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.Sort
 import reactor.test.StepVerifier
 
 @SpringBootTest
@@ -60,8 +61,10 @@ class CultureReservationCommentReactiveRepositoryTest {
                         userName = "tester"
                 )).block()
 
+        val pageRequest = PageRequest.of(0, 2, Sort.by("registerDate").descending())
+
         val findData = cultureReservationCommentReactiveRepository
-                .findByCultureReservationSvcIdOrderByRegisterDateDesc("testSvcId")
+                .findAllByCultureReservationSvcId(pageRequest, "testSvcId")
 
         StepVerifier
                 .create(findData)

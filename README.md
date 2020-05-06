@@ -98,35 +98,69 @@ response example:
 체육 시설 후기 조회
 
 ~~~
-GET http://localhost:8080/sport/reservation/comments?svcId={체육 시설 svcid}
+GET http://localhost:8080/sport/reservation/comments?svcId={체육 시설 svcid}&size=10&page=1
 ~~~
 
 request example: 
 
-GET http://localhost:8080/sport/reservation/comments?svcId=S200102152019666829
+http://localhost:8080/sport/reservation/comments?svcId=S200102152019666829&size=5&page=1
 
 response example:
 ~~~
-[
-    {
-        "id": "5e9fec66161eea2327b3f6da",
-        "svcId": "S200102152019666829",
-        "userName": "tester",
-        "rating": 4,
-        "comment": "좋아요",
-        "registerDate": "2020-04-22T07:04:06.453+0000",
-        "updateDate": "2020-04-22T07:04:06.453+0000"
-    },
-    {
-        "id": "5e981f7f5e225d2d28f02449",
-        "svcId": "S200102152019666829",
-        "userName": "tester",
-        "rating": 5,
-        "comment": "test comment",
-        "registerDate": "2020-04-16T09:03:58.934+0000",
-        "updateDate": "2020-04-16T09:03:58.934+0000"
+{
+    "content": [
+        {
+            "id": "5e9fec66161eea2327b3f6da",
+            "svcId": "S200102152019666829",
+            "userName": "tester",
+            "rating": 4,
+            "comment": "좋아요",
+            "registerDate": "2020-04-22T07:04:06.453+0000",
+            "updateDate": "2020-04-22T07:04:06.453+0000"
+        },
+        {
+            "id": "5e981f7f5e225d2d28f02449",
+            "svcId": "S200102152019666829",
+            "userName": "tester",
+            "rating": 5,
+            "comment": "test comment",
+            "registerDate": "2020-04-16T09:03:58.934+0000",
+            "updateDate": "2020-04-16T09:03:58.934+0000"
+        },
+        {
+            "id": "5e61ce85a2a0f325acd127f1",
+            "svcId": "S200102152019666829",
+            "userName": "tester",
+            "rating": 5,
+            "comment": "test comment",
+            "registerDate": "2020-03-06T04:16:04.895+0000",
+            "updateDate": "2020-03-06T04:16:04.895+0000"
+        },
+        {
+            "id": "5e61ac377cb5f51415536979",
+            "svcId": "S200102152019666829",
+            "userName": "tester",
+            "rating": 4,
+            "comment": "test comment"
+        },
+        {
+            "id": "5e61ad135d22ab27818f32b1",
+            "svcId": "S200102152019666829",
+            "userName": "tester",
+            "rating": 4,
+            "comment": "test comment"
+        }
+    ],
+    "pageInfo": {
+        "totalCount": 9,
+        "hasNext": true,
+        "isLast": false,
+        "isFirst": true,
+        "numberOfElements": 5,
+        "firstPage": 1,
+        "lastPage": 2
     }
-]
+}
 ~~~
 
 체육 시설 후기 등록
@@ -220,7 +254,7 @@ DELETE http://localhost:8080/sport/reservation/comment?password=123123&id=5e9fee
 
 response example: 
 ~~~
-
+200 OK
 ~~~
 
 
