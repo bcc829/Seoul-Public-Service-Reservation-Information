@@ -1,5 +1,6 @@
 package org.jeong.reservationinformation.common.handler
 
+import org.jeong.reservationinformation.common.util.Log
 import org.springframework.boot.web.reactive.error.ErrorWebExceptionHandler
 import org.springframework.core.annotation.Order
 import org.springframework.http.HttpStatus
@@ -15,6 +16,8 @@ import java.security.InvalidParameterException
 @Order(-2)
 class GlobalWebExceptionHandler : ErrorWebExceptionHandler {
 
+    companion object LOG: Log()
+
     override fun handle(exchange: ServerWebExchange, ex: Throwable): Mono<Void> {
 
         val responseStatusException = when (ex) {
@@ -23,8 +26,11 @@ class GlobalWebExceptionHandler : ErrorWebExceptionHandler {
             is AssertionError -> ResponseStatusException(HttpStatus.BAD_REQUEST, ex.message)
             is NullPointerException -> ResponseStatusException(HttpStatus.BAD_REQUEST)
             is InvalidParameterException -> ResponseStatusException(HttpStatus.BAD_REQUEST, ex.message)
-            else -> ex as ResponseStatusException
+            is ResponseStatusException -> { logger.error(ex.message); ex }
+            else -> { logger.error(ex.message); ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "server error") }
         }
+
+
 
         exchange.response.headers.contentType = MediaType.APPLICATION_PROBLEM_JSON
         exchange.response.statusCode = responseStatusException.status
