@@ -40,7 +40,7 @@ data class PublicReservationCultureVo(
         @JsonProperty("NOTICE")
         val notice: String,
         @JsonProperty("IMG_PATH")
-        val imagePath: String,
+        val imageUrl: String,
         @JsonProperty("TELNO")
         val Tel: String,
         @JsonProperty("V_MIN")
