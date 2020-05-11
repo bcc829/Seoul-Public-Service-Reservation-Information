@@ -30,67 +30,66 @@ GET http://localhost:8080/sport/reservations?size=2&page=1&category=ALL
 response example: 
 
 ~~~
-{
-    "content": [
+"content": [
         {
-            "y": "126.88390026512282",
-            "x": "37.574238294219086",
-            "svcid": "S120423174310156240",
-            "svcnm": "△ [야간] 마포 난지천 인조잔디 축구장",
-            "areanm": "마포구",
-            "svcopnbgndt": "2012-04-23 00:00:00.0",
-            "imgurl": "https://yeyak.seoul.go.kr/fileDownload.web?p=/TB_SVCIMG/2012/12/28/S120423174310156240&n=hu69ma3H7VZ1cGm496P23na3qbQ9Lp&on=S120423174310156240.jpg",
-            "maxclassnm": "체육시설",
-            "revstddaynm": "이용일",
-            "minclassnm": "축구장",
-            "placenm": "월드컵공원>난지천인조잔디축구장",
-            "svcopnenddt": "2020-12-31 00:00:00.0",
-            "rcptenddt": "2020-12-31 00:00:00.0",
-            "svcurl": "http://yeyak.seoul.go.kr/reservation/view.web?rsvsvcid=S120423174310156240",
-            "gubun": "자체",
-            "v_MAX": "22:00",
-            "rcptbgndt": "2019-11-01 09:00:00.0",
-            "usetgtinfo": "제한없음",
-            "dtlcont": "<p>1. 공공시설 예약서비스 이용시 필수 준수사항</p><p>모든 서비스의 이용은 담당 기관의 규정에 따릅니다. 각 시설의 규정 및 허가조건을 반드시 준수하여야 합니다.</p><p>각 관리기관의 시설물과 부대시설을 이용함에 있어 담당자들과 협의 후 사용합니다.</p><p>각 관리기관의 사고 발생시 서울시청에서는 어떠한 책임도 지지않습니다.</p><p>시설이용료 납부는 각 관리기관에서 규정에 준 합니다.</p><p>본 사이트와 각 관리기관의 규정을 위반할시에는 시설이용 취소 및 시설이용 불허의 조치를 취할 수 있습니다.</p><p>접수시간을 기준으로 브라우저에서 새로고침을 하면 변경된 정보를 볼 수 있습니다.</p><p>2. 시설예약</p><p>비회원일 경우에는 실명 확인을 통하여 사용하실 수 있으며 서울시 통합 회원에 가입 하시게 되면 서울시에서 제공하는 다양하고 많은 혜택을 받으실 수 있습니다.</p><p>3. 상세내용</p><p><!--StartFragment--><span style=\"text-align: left; line-height: 14.4pt; font-family: 'HY그래픽'; letter-spacing: 0pt; color: #000000; font-size: 12pt; font-weight: bold;\">예약이 완료 된 팀은 마이페이지 예약 확인증을 인출하여 난지천 축구장</span> <span style=\"text-align: left; line-height: 14.4pt; font-family: 'HY그래픽'; letter-spacing: 0pt; color: #000000; font-size: 12pt; font-weight: bold;\">관리자에게 확인시켜 주시기 바랍니다.</span></p>\r\n<p style=\"text-align: left; line-height: 120%; text-indent: 0pt; margin: 0pt; font-family: 'HY그래픽'; color: #000000; font-size: 12pt;\"><span style=\"text-align: justify; line-height: 19.2pt; font-family: 'HY그래픽'; letter-spacing: 0pt; color: #000000; font-size: 12pt; font-weight: bold;\"><span style=\"text-align: justify; line-height: 19.2pt; font-family: 'HY그래픽'; letter-spacing: 0pt; color: #000000; font-size: 12pt; font-weight: bold;\"><!--StartFragment--></span></span></p>\r\n<p class=\"바탕글\" style=\"margin-bottom: 1.6pt;\"><span style=\"font-family: HY그래픽; font-size: 12pt; font-weight: bold; mso-fareast-font-family: HY그래픽; mso-hansi-font-family: HY그래픽;\" lang=\"EN-US\">&clubs;</span><span style=\"color: #ff0000; font-family: HY그래픽; font-size: 15pt; font-weight: bold; mso-hansi-font-family: HY그래픽; mso-ascii-font-family: HY그래픽;\">휴대폰번호 및 주소 미기재 시 예약취소합니다</span><span style=\"font-family: HY그래픽; font-size: 12pt; font-weight: bold; mso-fareast-font-family: HY그래픽; mso-hansi-font-family: HY그래픽;\" lang=\"EN-US\"> &clubs; </span></p>\r\n<p style=\"text-align: justify; line-height: 160%; text-indent: 0pt; margin: 0pt; font-family: 'HY그래픽'; color",
-            "v_MIN": "18:00",
-            "revstdday": "1",
-            "svcstatnm": "예약일시중지",
-            "payatnm": "유료"
+            "GUBUN": "자체",
+            "SVCID": "S120423174310156240",
+            "MAXCLASSNM": "체육시설",
+            "MINCLASSNM": "축구장",
+            "SVCSTATNM": "접수중",
+            "SVCNM": "△ [야간] 마포 난지천 인조잔디 축구장",
+            "PAYATNM": "유료",
+            "PLACENM": "월드컵공원>난지천인조잔디축구장",
+            "USETGTINFO": "제한없음",
+            "SVCURL": "http://yeyak.seoul.go.kr/reservation/view.web?rsvsvcid=S120423174310156240",
+            "X": "37.574238294219086",
+            "Y": "126.88390026512282",
+            "SVCOPNBGNDT": "2012-04-23 00:00:00.0",
+            "SVCOPNENDDT": "2020-12-31 00:00:00.0",
+            "RCPTBGNDT": "2019-11-01 09:00:00.0",
+            "RCPTENDDT": "2020-12-31 00:00:00.0",
+            "AREANM": "마포구",
+            "IMGURL": "https://yeyak.seoul.go.kr/fileDownload.web?p=/TB_SVCIMG/2012/12/28/S120423174310156240&n=hu69ma3H7VZ1cGm496P23na3qbQ9Lp&on=S120423174310156240.jpg",
+            "DTLCONT": "<p>1. 공공시설 예약서비스 이용시 필수 준수사항</p><p>모든 서비스의 이용은 담당 기관의 규정에 따릅니다. 각 시설의 규정 및 허가조건을 반드시 준수하여야 합니다.</p><p>각 관리기관의 시설물과 부대시설을 이용함에 있어 담당자들과 협의 후 사용합니다.</p><p>각 관리기관의 사고 발생시 서울시청에서는 어떠한 책임도 지지않습니다.</p><p>시설이용료 납부는 각 관리기관에서 규정에 준 합니다.</p><p>본 사이트와 각 관리기관의 규정을 위반할시에는 시설이용 취소 및 시설이용 불허의 조치를 취할 수 있습니다.</p><p>접수시간을 기준으로 브라우저에서 새로고침을 하면 변경된 정보를 볼 수 있습니다.</p><p>2. 시설예약</p><p>비회원일 경우에는 실명 확인을 통하여 사용하실 수 있으며 서울시 통합 회원에 가입 하시게 되면 서울시에서 제공하는 다양하고 많은 혜택을 받으실 수 있습니다.</p><p>3. 상세내용</p><p><!--StartFragment--><span style=\"text-align: left; line-height: 14.4pt; font-family: 'HY그래픽'; letter-spacing: 0pt; color: #000000; font-size: 12pt; font-weight: bold;\">예약이 완료 된 팀은 마이페이지 예약 확인증을 인출하여 난지천 축구장</span> <span style=\"text-align: left; line-height: 14.4pt; font-family: 'HY그래픽'; letter-spacing: 0pt; color: #000000; font-size: 12pt; font-weight: bold;\">관리자에게 확인시켜 주시기 바랍니다.</span></p>\r\n<p style=\"text-align: left; line-height: 120%; text-indent: 0pt; margin: 0pt; font-family: 'HY그래픽'; color: #000000; font-size: 12pt;\"><span style=\"text-align: justify; line-height: 19.2pt; font-family: 'HY그래픽'; letter-spacing: 0pt; color: #000000; font-size: 12pt; font-weight: bold;\"><span style=\"text-align: justify; line-height: 19.2pt; font-family: 'HY그래픽'; letter-spacing: 0pt; color: #000000; font-size: 12pt; font-weight: bold;\"><!--StartFragment--></span></span></p>\r\n<p class=\"바탕글\" style=\"margin-bottom: 1.6pt;\"><span style=\"font-family: HY그래픽; font-size: 12pt; font-weight: bold; mso-fareast-font-family: HY그래픽; mso-hansi-font-family: HY그래픽;\" lang=\"EN-US\">&clubs;</span><span style=\"color: #ff0000; font-family: HY그래픽; font-size: 15pt; font-weight: bold; mso-hansi-font-family: HY그래픽; mso-ascii-font-family: HY그래픽;\">휴대폰번호 및 주소 미기재 시 예약취소합니다</span><span style=\"font-family: HY그래픽; font-size: 12pt; font-weight: bold; mso-fareast-font-family: HY그래픽; mso-hansi-font-family: HY그래픽;\" lang=\"EN-US\"> &clubs; </span></p>\r\n<p style=\"text-align: justify; line-height: 160%; text-indent: 0pt; margin: 0pt; font-family: 'HY그래픽'; color",
+            "V_MIN": "18:00",
+            "V_MAX": "22:00",
+            "REVSTDDAYNM": "이용일",
+            "REVSTDDAY": "1"
         },
         {
-            "y": "126.88390026512282",
-            "x": "37.574238294219086",
-            "svcid": "S120605140843257226",
-            "svcnm": "○ [평일] <오전>마포 난지천 인조잔디축구장",
-            "areanm": "마포구",
-            "svcopnbgndt": "2012-04-23 00:00:00.0",
-            "imgurl": "https://yeyak.seoul.go.kr/fileDownload.web?p=/TB_SVCIMG/2012/12/28/S120605140843257226&n=9rXvLr3Mi22Y43ThKyhC8Ty977b2nf&on=S120605140843257226.jpg",
-            "maxclassnm": "체육시설",
-            "revstddaynm": "이용일",
-            "minclassnm": "축구장",
-            "placenm": "월드컵공원>난지천인조잔디축구장",
-            "svcopnenddt": "2020-12-31 00:00:00.0",
-            "rcptenddt": "2020-12-31 12:00:00.0",
-            "svcurl": "http://yeyak.seoul.go.kr/reservation/view.web?rsvsvcid=S120605140843257226",
-            "gubun": "자체",
-            "v_MAX": "9:00",
-            "rcptbgndt": "2019-11-01 09:00:00.0",
-            "usetgtinfo": "제한없음",
-            "dtlcont": "<p>1. 공공시설 예약서비스 이용시 필수 준수사항</p><p>모든 서비스의 이용은 담당 기관의 규정에 따릅니다. 각 시설의 규정 및 허가조건을 반드시 준수하여야 합니다.</p><p>각 관리기관의 시설물과 부대시설을 이용함에 있어 담당자들과 협의 후 사용합니다.</p><p>각 관리기관의 사고 발생시 서울시청에서는 어떠한 책임도 지지않습니다.</p><p>시설이용료 납부는 각 관리기관에서 규정에 준 합니다.</p><p>본 사이트와 각 관리기관의 규정을 위반할시에는 시설이용 취소 및 시설이용 불허의 조치를 취할 수 있습니다.</p><p>접수시간을 기준으로 브라우저에서 새로고침을 하면 변경된 정보를 볼 수 있습니다.</p><p>2. 시설예약</p><p>비회원일 경우에는 실명 확인을 통하여 사용하실 수 있으며 서울시 통합 회원에 가입 하시게 되면 서울시에서 제공하는 다양하고 많은 혜택을 받으실 수 있습니다.</p><p>3. 상세내용</p><!--StartFragment-->&nbsp;\r\n<p style=\"text-align: left; line-height: 160%; text-indent: 0pt; margin: 0pt; font-family: 'HY그래픽'; color: #000000; font-size: 12pt;\"><span style=\"text-align: left; line-height: 19.2pt; font-family: 'HY그래픽'; letter-spacing: 0pt; color: #000000; font-size: 12pt; font-weight: bold;\">&clubs; 2020년 평일 주간 예약신청</span></p>\r\n<p style=\"text-align: left; line-height: 160%; text-indent: 0pt; margin: 0pt; font-family: 'HY그래픽'; color: #000000; font-size: 12pt;\"><span style=\"text-align: left; line-height: 19.2pt; font-family: 'HY그래픽'; letter-spacing: 0pt; color: #000000; font-size: 12pt; font-weight: bold;\">가. 신청기간 : </span><span style=\"text-align: left; line-height: 19.2pt; font-family: 'HY그래픽'; letter-spacing: 0pt; color: #000000; font-size: 12pt; font-weight: bold; text-decoration: underline;\">사용일 30일 전 12:00</span><span style=\"text-decoration: underline;\"><span style=\"text-align: left; color: #000000; line-height: 19.2pt; letter-spacing: 0pt; font-family: 'HY그래픽'; font-size: 12pt; font-weight: bold; text-decoration: underline;\">부터</span><span style=\"text-align: left; color: #000000; line-height: 19.2pt; letter-spacing: 0pt; font-family: 'HY그래픽'; font-size: 12pt; font-weight: bold; text-decoration: underline;\"> 1일 전 18:00까지 </span><span style=\"text-align: left; color: #000000; line-height: 19.2pt; letter-spacing: 0pt; font-family: 'HY그래픽'; font-size: 12pt; font-weight: bold; text-decoration: underline;\">선착순</span></span></p>\r\n<p style=\"text-align: justify; line-height: 160%; text-indent: ",
-            "v_MIN": "06:00",
-            "revstdday": "1",
-            "svcstatnm": "예약일시중지",
-            "payatnm": "유료"
+            "GUBUN": "자체",
+            "SVCID": "S120605140843257226",
+            "MAXCLASSNM": "체육시설",
+            "MINCLASSNM": "축구장",
+            "SVCSTATNM": "접수중",
+            "SVCNM": "○ [평일] <오전>마포 난지천 인조잔디축구장",
+            "PAYATNM": "유료",
+            "PLACENM": "월드컵공원>난지천인조잔디축구장",
+            "USETGTINFO": "제한없음",
+            "SVCURL": "http://yeyak.seoul.go.kr/reservation/view.web?rsvsvcid=S120605140843257226",
+            "X": "37.574238294219086",
+            "Y": "126.88390026512282",
+            "SVCOPNBGNDT": "2012-04-23 00:00:00.0",
+            "SVCOPNENDDT": "2020-12-31 00:00:00.0",
+            "RCPTBGNDT": "2020-05-07 10:00:00.0",
+            "RCPTENDDT": "2020-12-31 12:00:00.0",
+            "AREANM": "마포구",
+            "IMGURL": "https://yeyak.seoul.go.kr/fileDownload.web?p=/TB_SVCIMG/2012/12/28/S120605140843257226&n=9rXvLr3Mi22Y43ThKyhC8Ty977b2nf&on=S120605140843257226.jpg",
+            "DTLCONT": "<p>1. 공공시설 예약서비스 이용시 필수 준수사항</p><p>모든 서비스의 이용은 담당 기관의 규정에 따릅니다. 각 시설의 규정 및 허가조건을 반드시 준수하여야 합니다.</p><p>각 관리기관의 시설물과 부대시설을 이용함에 있어 담당자들과 협의 후 사용합니다.</p><p>각 관리기관의 사고 발생시 서울시청에서는 어떠한 책임도 지지않습니다.</p><p>시설이용료 납부는 각 관리기관에서 규정에 준 합니다.</p><p>본 사이트와 각 관리기관의 규정을 위반할시에는 시설이용 취소 및 시설이용 불허의 조치를 취할 수 있습니다.</p><p>접수시간을 기준으로 브라우저에서 새로고침을 하면 변경된 정보를 볼 수 있습니다.</p><p>2. 시설예약</p><p>비회원일 경우에는 실명 확인을 통하여 사용하실 수 있으며 서울시 통합 회원에 가입 하시게 되면 서울시에서 제공하는 다양하고 많은 혜택을 받으실 수 있습니다.</p><p>3. 상세내용</p><!--StartFragment-->&nbsp;\r\n<p style=\"text-align: left; line-height: 160%; text-indent: 0pt; margin: 0pt; font-family: 'HY그래픽'; color: #000000; font-size: 12pt;\"><span style=\"text-align: left; line-height: 19.2pt; font-family: 'HY그래픽'; letter-spacing: 0pt; color: #000000; font-size: 12pt; font-weight: bold;\">&clubs; 2020년 평일 주간 예약신청</span></p>\r\n<p style=\"text-align: left; line-height: 160%; text-indent: 0pt; margin: 0pt; font-family: 'HY그래픽'; color: #000000; font-size: 12pt;\"><span style=\"text-align: left; line-height: 19.2pt; font-family: 'HY그래픽'; letter-spacing: 0pt; color: #000000; font-size: 12pt; font-weight: bold;\">가. 신청기간 : </span><span style=\"text-align: left; line-height: 19.2pt; font-family: 'HY그래픽'; letter-spacing: 0pt; color: #000000; font-size: 12pt; font-weight: bold; text-decoration: underline;\">사용일 30일 전 12:00</span><span style=\"text-decoration: underline;\"><span style=\"text-align: left; color: #000000; line-height: 19.2pt; letter-spacing: 0pt; font-family: 'HY그래픽'; font-size: 12pt; font-weight: bold; text-decoration: underline;\">부터</span><span style=\"text-align: left; color: #000000; line-height: 19.2pt; letter-spacing: 0pt; font-family: 'HY그래픽'; font-size: 12pt; font-weight: bold; text-decoration: underline;\"> 1일 전 18:00까지 </span><span style=\"text-align: left; color: #000000; line-height: 19.2pt; letter-spacing: 0pt; font-family: 'HY그래픽'; font-size: 12pt; font-weight: bold; text-decoration: underline;\">선착순</span></span></p>\r\n<p style=\"text-align: justify; line-height: 160%; text-indent: ",
+            "V_MIN": "06:00",
+            "V_MAX": "9:00",
+            "REVSTDDAYNM": "이용일",
+            "REVSTDDAY": "1"
         }
     ],
     "pageInfo": {
-        "totalCount": 212,
+        "totalCount": 224,
         "hasNext": true,
         "isLast": false,
         "isFirst": true,
         "numberOfElements": 2,
         "firstPage": 1,
-        "lastPage": 106
+        "lastPage": 112
     }
 }
 ~~~
@@ -257,7 +256,239 @@ response example:
 200 OK
 ~~~
 
+문화 시설 예약 목록 조회
+~~~
+http://localhost:8080/culture/reservations?size=한번에 조회할 데이터 크기&page=조회할 페이지&category={ALL, COMPETITION, EXHIBITION, PREVIEW, PERFORMANCE, CONCERT}
+~~~
+request example:
 
-TODO 문화 시설 예약 조회및 시설 후기 조회, 등록, 삭제 및 수정 문서 작성,
-게시판 기능 구현
+GET http://localhost:8080/culture/reservations?size=2&page=1&category=EXHIBITION 
+
+response example: 
+~~~
+{
+    "content": [
+        {
+            "GUBUN": "자체",
+            "SVCID": "S191212150329702277",
+            "MAXCLASSNM": "문화행사",
+            "MINCLASSNM": "전시/관람",
+            "SVCSTATNM": "접수중",
+            "SVCNM": "최규하 가옥 전시관람",
+            "PAYATNM": "무료",
+            "PLACENM": "최규하대통령가옥 ",
+            "USETGTINFO": "제한없음",
+            "SVCURL": "http://yeyak.seoul.go.kr/reservation/view.web?rsvsvcid=S191212150329702277",
+            "X": "37.555340210386554",
+            "Y": "126.9149254525266",
+            "SVCOPNBGNDT": "2020-01-01 00:00:00.0",
+            "SVCOPNENDDT": "2020-12-31 00:00:00.0",
+            "RCPTBGNDT": "2020-01-01 00:00:00.0",
+            "RCPTENDDT": "2020-12-30 22:00:00.0",
+            "AREANM": "마포구",
+            "NOTICE": "눈으로 즐겁게 관람 부탁드립니다 ^^",
+            "IMG_PATH": "https://yeyak.seoul.go.kr/fileDownload.web?p=/TB_SVCIMG/2019/12/12/S191212150329702277&n=6Ba7EgRuL28wO55PU918NeP2T4I2qt&on=최규하가옥전경.jpg",
+            "V_MIN": "10:00",
+            "V_MAX": "18:00",
+            "REVSTDDAYNM": "이용일",
+            "REVSTDDAY": "1",
+            "tel": "02-2133-2628"
+        },
+        {
+            "GUBUN": "자체",
+            "SVCID": "S191212154137223185",
+            "MAXCLASSNM": "문화행사",
+            "MINCLASSNM": "전시/관람",
+            "SVCSTATNM": "접수중",
+            "SVCNM": "박정희 가옥 전시관람 ",
+            "PAYATNM": "무료",
+            "PLACENM": "박정희 대통령 가옥 ",
+            "USETGTINFO": "제한없음",
+            "SVCURL": "http://yeyak.seoul.go.kr/reservation/view.web?rsvsvcid=S191212154137223185",
+            "X": "37.56147074284965",
+            "Y": "127.01985673233767",
+            "SVCOPNBGNDT": "2020-01-01 00:00:00.0",
+            "SVCOPNENDDT": "2020-12-31 00:00:00.0",
+            "RCPTBGNDT": "2020-01-01 00:00:00.0",
+            "RCPTENDDT": "2020-12-30 22:00:00.0",
+            "AREANM": "중구",
+            "NOTICE": "눈으로 즐겁게 관람 부탁드립니다 ^^",
+            "IMG_PATH": "https://yeyak.seoul.go.kr/fileDownload.web?p=/TB_SVCIMG/2019/12/12/S191212154137223185&n=qACE5owYpeJ6o729KTJ25UQpNj1Pij&on=_DSC4120.JPG",
+            "V_MIN": "10:00",
+            "V_MAX": "18:00",
+            "REVSTDDAYNM": "이용일",
+            "REVSTDDAY": "1",
+            "tel": "02-2133-2628"
+        }
+    ],
+    "pageInfo": {
+        "totalCount": 15,
+        "hasNext": true,
+        "isLast": false,
+        "isFirst": true,
+        "numberOfElements": 2,
+        "firstPage": 1,
+        "lastPage": 8
+    }
+}
+~~~
+
+문화 시설 후기 조회
+
+~~~
+GET http://localhost:8080/culture/reservation/comments?svcId={체육 시설 svcid}&size=10&page=1
+~~~
+
+request example: 
+
+http://localhost:8080/culture/reservation/comments?svcId=S200102152019666829&size=5&page=1
+
+response example:
+~~~
+{
+    "content": [
+        {
+            "id": "5eb89b5e35b5a81fd81ee9c1",
+            "svcId": "S200102152019666829",
+            "userName": "tester",
+            "rating": 2,
+            "comment": "그저 그래요",
+            "registerDate": "2020-05-11T00:25:02.874+0000",
+            "updateDate": "2020-05-11T00:25:02.874+0000"
+        },
+        {
+            "id": "5eb89b5035b5a81fd81ee9c0",
+            "svcId": "S200102152019666829",
+            "userName": "tester",
+            "rating": 1,
+            "comment": "싫어요",
+            "registerDate": "2020-05-11T00:24:48.435+0000",
+            "updateDate": "2020-05-11T00:24:48.435+0000"
+        },
+        {
+            "id": "5eb89b3435b5a81fd81ee9bf",
+            "svcId": "S200102152019666829",
+            "userName": "tester",
+            "rating": 4,
+            "comment": "좋아요",
+            "registerDate": "2020-05-11T00:24:20.744+0000",
+            "updateDate": "2020-05-11T00:24:20.744+0000"
+        },
+        {
+            "id": "5e65e5e321745d2282b5d99c",
+            "svcId": "S200102152019666829",
+            "userName": "tester",
+            "rating": 5,
+            "comment": "test comment",
+            "registerDate": "2020-03-09T06:44:50.872+0000",
+            "updateDate": "2020-03-09T06:44:50.872+0000"
+        }
+    ],
+    "pageInfo": {
+        "totalCount": 4,
+        "hasNext": false,
+        "isLast": false,
+        "isFirst": true,
+        "numberOfElements": 4,
+        "firstPage": 1,
+        "lastPage": 1
+    }
+}
+~~~
+문화 시설 후기 등록
+
+~~~
+POST http://localhost:8080/culture/reservation/comment
+
+body {
+   "svcId": "{예약 정보 svcid}",
+   "userName" : "{후기 등록할 닉네임}",
+   "password": "{후기 등록 후 수정/삭제를 위한 password}",
+   "rating": {1~5 별점},
+   "comment": "{후기 내용}" 
+}
+~~~
+
+request example: 
+~~~
+POST http://localhost:8080/culture/reservation/comment
+body : {
+       	    "svcId": "S200102152019666829",
+               "userName" : "tester",
+               "password": "123123",
+               "rating": 3,
+               "comment": "보통이에요"
+       }
+~~~
+
+response example: 
+~~~
+{
+    "id": "5eb89bef35b5a81fd81ee9c2",
+    "svcId": "S200102152019666829",
+    "userName": "tester",
+    "rating": 3,
+    "comment": "보통이에요",
+    "registerDate": "2020-05-11T00:27:27.471+0000",
+    "updateDate": "2020-05-11T00:27:27.471+0000"
+}
+~~~
+
+문화 시설 후기 수정
+
+~~~
+PUT http://localhost:8080/culture/reservation/comment
+
+body : {
+            "id": "{id}",
+            "password": "{후기 등록 후 수정/삭제를 위한 password}",
+            "rating": {1~5 별점},
+            "comment": "{후기 내용}"
+        }
+~~~
+
+request example:
+~~~
+PUT http://localhost:8080/culture/reservation/comment
+
+body: {
+          "id": "5eb89bef35b5a81fd81ee9c2",
+      	"password": "123123",
+          "rating": 4,
+          "comment": "괜찮아요"
+      }
+
+~~~
+response example: 
+~~~
+{
+    "id": "5eb89bef35b5a81fd81ee9c2",
+    "svcId": "S200102152019666829",
+    "userName": "tester",
+    "rating": 4,
+    "comment": "괜찮아요",
+    "registerDate": "2020-05-11T00:27:27.471+0000",
+    "updateDate": "2020-05-11T00:28:39.047+0000"
+}
+~~~
+
+체육 시설 후기 삭제
+
+~~~
+DELETE http://localhost:8080/culture/reservation/comment?password={후기 등록 후 수정/삭제를 위한 password}&id={id}
+~~~
+
+request example: 
+
+~~~
+DELETE http://localhost:8080/culture/reservation/comment?password=123123&id=5eb89bef35b5a81fd81ee9c2
+~~~
+
+response example: 
+~~~
+200 OK
+~~~
+
+
+TODO 게시판 등록, 수정, 삭제, 조회및 검색 문서 작성
   
