@@ -453,7 +453,7 @@ PUT http://localhost:8080/culture/reservation/comment
 
 body: {
           "id": "5eb89bef35b5a81fd81ee9c2",
-      	"password": "123123",
+      	  "password": "123123",
           "rating": 4,
           "comment": "괜찮아요"
       }
@@ -489,6 +489,84 @@ response example:
 200 OK
 ~~~
 
+게시글 등록
 
-TODO 게시판 등록, 수정, 삭제, 조회및 검색 문서 작성
+~~~
+POST http://localhost:8080/community/post
+
+body {
+   "username" : "{게시글 등록할 닉네임}",
+   "password": "{게시글 등록 후 수정/삭제를 위한 password}",
+   "postCategory": "{SOCCER, BASEBALL, BASKETBALL}"
+   "title": {제목},
+   "content": "{본문}" 
+}
+~~~
+
+request example: 
+~~~
+http://localhost:8080/community/post
+body : {
+            "username" : "tester",
+            "password" : "123123",
+            "postCategory" : "SOCCER",
+            "title": "제목",
+            "content" : "내용"
+        }
+~~~
+
+response example: 
+~~~
+{
+    "id": "5eb9eac3ade7d537db018f37",
+    "username": "tester",
+    "postCategory": "SOCCER",
+    "title": "제목",
+    "content": "내용",
+    "viewCount": 0,
+    "registerDate": "2020-05-12T00:16:03.080+0000",
+    "updateDate": "2020-05-12T00:16:03.080+0000"
+}
+~~~
+
+게시글 수정
+
+~~~
+PUT http://localhost:8080/community/post
+
+body {
+   "password": "{게시글 등록 후 수정/삭제를 위한 password}",
+   "id": "{게시글 id}"
+   "title": {제목},
+   "content": "{본문}" 
+}
+~~~
+
+request example: 
+~~~
+http://localhost:8080/community/post
+body : {
+           "id": "5eb9ee71ade7d537db018f3e",
+           "title": "업데이트 제목",
+           "content": "업데이트 내용3",
+           "password": "123123"
+       }
+~~~
+
+response example: 
+~~~
+{
+    "id": "5eb9ee71ade7d537db018f3e",
+    "username": "tester",
+    "postCategory": "SOCCER",
+    "title": "업데이트 제목",
+    "content": "업데이트 내용3",
+    "viewCount": 0,
+    "registerDate": "2020-05-12T00:31:45.220+0000",
+    "updateDate": "2020-05-12T00:35:45.468+0000"
+}
+~~~
+
+TODO 게시글 삭제, 조회및 검색 문서 작성
+게시글 댓글 작성, 수정, 삭제, 조회 문서 작성
   

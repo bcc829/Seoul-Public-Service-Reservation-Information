@@ -61,7 +61,7 @@ class PostCrudServiceTest {
         postCrudService.insertPost(InsertPostVo(
                 content = "test1232",
                 title = "test title",
-                userName = "tester2",
+                username = "tester2",
                 postCategory = PostCategory.SOCCER,
                 password = "test124"
         )).block()
@@ -80,7 +80,7 @@ class PostCrudServiceTest {
         val post = postCrudService.insertPost(InsertPostVo(
                 content = "test1232",
                 title = "test title",
-                userName = "tester2",
+                username = "tester2",
                 postCategory = PostCategory.SOCCER,
                 password = "test124"
         )).block()!!
@@ -100,7 +100,7 @@ class PostCrudServiceTest {
         val id = postCrudService.insertPost(InsertPostVo(
                 content = "test1232",
                 title = "test title",
-                userName = "tester2",
+                username = "tester2",
                 postCategory = PostCategory.SOCCER,
                 password = "test124"
         )).block()!!.id

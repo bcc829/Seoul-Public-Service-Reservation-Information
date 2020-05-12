@@ -4,7 +4,7 @@ import org.jeong.reservationinformation.community.domain.document.Post
 import org.jeong.reservationinformation.community.domain.enums.PostCategory
 
 data class InsertPostVo(
-        val userName: String,
+        val username: String,
         val password: String,
         val postCategory: PostCategory,
         val title: String,
@@ -12,7 +12,7 @@ data class InsertPostVo(
 ) {
     fun toPost(): Post {
         return Post(
-                username = userName,
+                username = username,
                 password = password,
                 postCategory = postCategory,
                 title = title,
