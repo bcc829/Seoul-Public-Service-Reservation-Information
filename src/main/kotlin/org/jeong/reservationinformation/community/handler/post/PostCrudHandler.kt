@@ -38,7 +38,7 @@ class PostCrudHandler(val postCrudService: PostCrudService) {
                     .body(postCrudService.deletePost(
                             id = request.queryParam("id")
                                     .orElseThrow { IllegalArgumentException("id is not exist") },
-                            password = request.queryParam("id")
+                            password = request.queryParam("password")
                                     .orElseThrow { IllegalArgumentException("password is not exist") }
                             ), Void::class.java)
 

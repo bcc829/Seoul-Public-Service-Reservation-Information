@@ -567,6 +567,23 @@ response example:
 }
 ~~~
 
-TODO 게시글 삭제, 조회및 검색 문서 작성
+게시글 삭제
+
+~~~
+DELETE http://localhost:8080/community/post?password={게시글 등록 후 수정/삭제를 위한 password}&id={id}
+~~~
+
+request example: 
+
+~~~
+DELETE http://localhost:8080/community/post?password=123123&id=5ebbb850e48a084ae5d50ebf
+~~~
+
+response example: 
+~~~
+200 OK
+~~~
+
+TODO 게시글 조회및 검색 문서 작성
 게시글 댓글 작성, 수정, 삭제, 조회 문서 작성
   
