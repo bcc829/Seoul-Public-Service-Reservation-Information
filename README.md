@@ -336,12 +336,13 @@ response example:
 문화 시설 후기 조회
 
 ~~~
-GET http://localhost:8080/culture/reservation/comments?svcId={체육 시설 svcid}&size=10&page=1
+GET http://localhost:8080/culture/reservation/comments?svcId={체육 시설 svcid}&size=한번에 조회할 데이터 크기&page=페이지 번호
 ~~~
 
 request example: 
-
+~~~
 http://localhost:8080/culture/reservation/comments?svcId=S200102152019666829&size=5&page=1
+~~~
 
 response example:
 ~~~
@@ -489,6 +490,31 @@ response example:
 200 OK
 ~~~
 
+게시글 조회
+
+~~~
+GET http://localhost:8080/community/post?id={게시글 id}
+~~~
+
+request example: 
+~~~
+http://localhost:8080/community/post?id=5eb9ee71ade7d537db018f3e
+~~~
+
+response example:
+~~~
+{
+    "id": "5eb9ee71ade7d537db018f3e",
+    "username": "tester",
+    "postCategory": "SOCCER",
+    "title": "업데이트 제목",
+    "content": "업데이트 내용3",
+    "viewCount": 1,
+    "registerDate": "2020-05-12T00:31:45.220+0000",
+    "updateDate": "2020-05-14T07:36:37.938+0000"
+}
+~~~
+
 게시글 등록
 
 ~~~
@@ -584,6 +610,357 @@ response example:
 200 OK
 ~~~
 
-TODO 게시글 조회및 검색 문서 작성
-게시글 댓글 작성, 수정, 삭제, 조회 문서 작성
+모든 카테고리 게시글 조회
+
+~~~
+GET http://localhost:8080/community/posts?size=한번에 조회할 데이터 크기&page=페이지 번호
+~~~
+
+request example: 
+~~~
+http://localhost:8080/community/posts?size=5&page=1
+~~~
+
+response example:
+~~~
+{
+    "content": [
+        {
+            "id": "5eb9ee71ade7d537db018f3e",
+            "username": "tester",
+            "postCategory": "SOCCER",
+            "title": "업데이트 제목",
+            "content": "업데이트 내용3",
+            "viewCount": 1,
+            "registerDate": "2020-05-12T00:31:45.220+0000",
+            "updateDate": "2020-05-14T07:36:37.938+0000"
+        },
+        {
+            "id": "5eb9ee62ade7d537db018f3d",
+            "username": "tester",
+            "postCategory": "SOCCER",
+            "title": "테스트 테스트",
+            "content": "내용3",
+            "viewCount": 0,
+            "registerDate": "2020-05-12T00:31:30.599+0000",
+            "updateDate": "2020-05-12T00:31:30.599+0000"
+        },
+        {
+            "id": "5eb9ee5aade7d537db018f3c",
+            "username": "tester",
+            "postCategory": "SOCCER",
+            "title": "테스트 제목",
+            "content": "내용3",
+            "viewCount": 0,
+            "registerDate": "2020-05-12T00:31:22.982+0000",
+            "updateDate": "2020-05-12T00:31:22.982+0000"
+        },
+        {
+            "id": "5eb9ee51ade7d537db018f3b",
+            "username": "tester",
+            "postCategory": "SOCCER",
+            "title": "제목00",
+            "content": "내용3",
+            "viewCount": 0,
+            "registerDate": "2020-05-12T00:31:13.372+0000",
+            "updateDate": "2020-05-12T00:31:13.372+0000"
+        },
+        {
+            "id": "5eb9ee4bade7d537db018f3a",
+            "username": "tester",
+            "postCategory": "SOCCER",
+            "title": "제목4",
+            "content": "내용3",
+            "viewCount": 0,
+            "registerDate": "2020-05-12T00:31:07.797+0000",
+            "updateDate": "2020-05-12T00:31:07.797+0000"
+        }
+    ],
+    "pageInfo": {
+        "totalCount": 8,
+        "hasNext": true,
+        "isLast": false,
+        "isFirst": true,
+        "numberOfElements": 5,
+        "firstPage": 1,
+        "lastPage": 2
+    }
+}
+~~~
+
+특정 카테고리 게시글 조회
+
+~~~
+GET http://localhost:8080/community/posts/search/category/{SOCCER, BASEBALL, BASKETBALL}?size=한번에 조회할 데이터 크기&page=페이지 번호
+~~~
+
+request example: 
+~~~
+http://localhost:8080/community/posts/search/category/SOCCER?size=5&page=1
+~~~
+
+response example:
+
+~~~
+{
+    "content": [
+        {
+            "id": "5eb9ee71ade7d537db018f3e",
+            "username": "tester",
+            "postCategory": "SOCCER",
+            "title": "업데이트 제목",
+            "content": "업데이트 내용3",
+            "viewCount": 1,
+            "registerDate": "2020-05-12T00:31:45.220+0000",
+            "updateDate": "2020-05-14T07:36:37.938+0000"
+        },
+        {
+            "id": "5eb9ee62ade7d537db018f3d",
+            "username": "tester",
+            "postCategory": "SOCCER",
+            "title": "테스트 테스트",
+            "content": "내용3",
+            "viewCount": 0,
+            "registerDate": "2020-05-12T00:31:30.599+0000",
+            "updateDate": "2020-05-12T00:31:30.599+0000"
+        },
+        {
+            "id": "5eb9ee5aade7d537db018f3c",
+            "username": "tester",
+            "postCategory": "SOCCER",
+            "title": "테스트 제목",
+            "content": "내용3",
+            "viewCount": 0,
+            "registerDate": "2020-05-12T00:31:22.982+0000",
+            "updateDate": "2020-05-12T00:31:22.982+0000"
+        },
+        {
+            "id": "5eb9ee51ade7d537db018f3b",
+            "username": "tester",
+            "postCategory": "SOCCER",
+            "title": "제목00",
+            "content": "내용3",
+            "viewCount": 0,
+            "registerDate": "2020-05-12T00:31:13.372+0000",
+            "updateDate": "2020-05-12T00:31:13.372+0000"
+        },
+        {
+            "id": "5eb9ee4bade7d537db018f3a",
+            "username": "tester",
+            "postCategory": "SOCCER",
+            "title": "제목4",
+            "content": "내용3",
+            "viewCount": 0,
+            "registerDate": "2020-05-12T00:31:07.797+0000",
+            "updateDate": "2020-05-12T00:31:07.797+0000"
+        }
+    ],
+    "pageInfo": {
+        "totalCount": 8,
+        "hasNext": true,
+        "isLast": false,
+        "isFirst": true,
+        "numberOfElements": 5,
+        "firstPage": 1,
+        "lastPage": 2
+    }
+}
+~~~
+
+특정 카테고리 게시글 본문 검색
+
+~~~
+GET http://localhost:8080/community/posts/search/category/{SOCCER, BASEBALL, BASKETBALL}/content?keyword=검색 키워드size=한번에 조회할 데이터 크기&page=페이지 번호
+~~~
+
+request example: 
+~~~
+http://localhost:8080/community/posts/search/category/SOCCER/content?keyword=내용&size=5&page=1
+~~~
+
+response example:
+~~~
+{
+    "content": [
+        {
+            "id": "5eb9ee71ade7d537db018f3e",
+            "username": "tester",
+            "postCategory": "SOCCER",
+            "title": "업데이트 제목",
+            "content": "업데이트 내용3",
+            "viewCount": 1,
+            "registerDate": "2020-05-12T00:31:45.220+0000",
+            "updateDate": "2020-05-14T07:36:37.938+0000"
+        },
+        {
+            "id": "5eb9ee62ade7d537db018f3d",
+            "username": "tester",
+            "postCategory": "SOCCER",
+            "title": "테스트 테스트",
+            "content": "내용3",
+            "viewCount": 0,
+            "registerDate": "2020-05-12T00:31:30.599+0000",
+            "updateDate": "2020-05-12T00:31:30.599+0000"
+        },
+        {
+            "id": "5eb9ee5aade7d537db018f3c",
+            "username": "tester",
+            "postCategory": "SOCCER",
+            "title": "테스트 제목",
+            "content": "내용3",
+            "viewCount": 0,
+            "registerDate": "2020-05-12T00:31:22.982+0000",
+            "updateDate": "2020-05-12T00:31:22.982+0000"
+        },
+        {
+            "id": "5eb9ee51ade7d537db018f3b",
+            "username": "tester",
+            "postCategory": "SOCCER",
+            "title": "제목00",
+            "content": "내용3",
+            "viewCount": 0,
+            "registerDate": "2020-05-12T00:31:13.372+0000",
+            "updateDate": "2020-05-12T00:31:13.372+0000"
+        },
+        {
+            "id": "5eb9ee4bade7d537db018f3a",
+            "username": "tester",
+            "postCategory": "SOCCER",
+            "title": "제목4",
+            "content": "내용3",
+            "viewCount": 0,
+            "registerDate": "2020-05-12T00:31:07.797+0000",
+            "updateDate": "2020-05-12T00:31:07.797+0000"
+        }
+    ],
+    "pageInfo": {
+        "totalCount": 8,
+        "hasNext": true,
+        "isLast": false,
+        "isFirst": true,
+        "numberOfElements": 5,
+        "firstPage": 1,
+        "lastPage": 2
+    }
+}
+~~~
+
+특정 카테고리 게시글 제목 검색
+
+~~~
+GET http://localhost:8080/community/posts/search/category/{SOCCER, BASEBALL, BASKETBALL}/title?keyword=검색 키워드size=한번에 조회할 데이터 크기&page=페이지 번호
+~~~
+
+request example: 
+~~~
+http://localhost:8080/community/posts/search/category/SOCCER/title?keyword=테스트%20테스트&size=5&page=1
+~~~
+
+response example:
+~~~
+{
+    "content": [
+        {
+            "id": "5eb9ee62ade7d537db018f3d",
+            "username": "tester",
+            "postCategory": "SOCCER",
+            "title": "테스트 테스트",
+            "content": "내용3",
+            "viewCount": 0,
+            "registerDate": "2020-05-12T00:31:30.599+0000",
+            "updateDate": "2020-05-12T00:31:30.599+0000"
+        }
+    ],
+    "pageInfo": {
+        "totalCount": 1,
+        "hasNext": false,
+        "isLast": false,
+        "isFirst": true,
+        "numberOfElements": 1,
+        "firstPage": 1,
+        "lastPage": 1
+    }
+}
+~~~
+
+특정 카테고리 게시글 글쓴이 검색
+
+~~~
+GET http://localhost:8080/community/posts/search/category/{SOCCER, BASEBALL, BASKETBALL}/uesrname?keyword=검색 키워드size=한번에 조회할 데이터 크기&page=페이지 번호
+~~~
+
+request example: 
+~~~
+http://localhost:8080/community/posts/search/category/SOCCER/username?keyword=tester&size=5&page=1
+~~~
+
+response example:
+~~~
+{
+    "content": [
+        {
+            "id": "5eb9ee71ade7d537db018f3e",
+            "username": "tester",
+            "postCategory": "SOCCER",
+            "title": "업데이트 제목",
+            "content": "업데이트 내용3",
+            "viewCount": 1,
+            "registerDate": "2020-05-12T00:31:45.220+0000",
+            "updateDate": "2020-05-14T07:36:37.938+0000"
+        },
+        {
+            "id": "5eb9ee62ade7d537db018f3d",
+            "username": "tester",
+            "postCategory": "SOCCER",
+            "title": "테스트 테스트",
+            "content": "내용3",
+            "viewCount": 0,
+            "registerDate": "2020-05-12T00:31:30.599+0000",
+            "updateDate": "2020-05-12T00:31:30.599+0000"
+        },
+        {
+            "id": "5eb9ee5aade7d537db018f3c",
+            "username": "tester",
+            "postCategory": "SOCCER",
+            "title": "테스트 제목",
+            "content": "내용3",
+            "viewCount": 0,
+            "registerDate": "2020-05-12T00:31:22.982+0000",
+            "updateDate": "2020-05-12T00:31:22.982+0000"
+        },
+        {
+            "id": "5eb9ee51ade7d537db018f3b",
+            "username": "tester",
+            "postCategory": "SOCCER",
+            "title": "제목00",
+            "content": "내용3",
+            "viewCount": 0,
+            "registerDate": "2020-05-12T00:31:13.372+0000",
+            "updateDate": "2020-05-12T00:31:13.372+0000"
+        },
+        {
+            "id": "5eb9ee4bade7d537db018f3a",
+            "username": "tester",
+            "postCategory": "SOCCER",
+            "title": "제목4",
+            "content": "내용3",
+            "viewCount": 0,
+            "registerDate": "2020-05-12T00:31:07.797+0000",
+            "updateDate": "2020-05-12T00:31:07.797+0000"
+        }
+    ],
+    "pageInfo": {
+        "totalCount": 8,
+        "hasNext": true,
+        "isLast": false,
+        "isFirst": true,
+        "numberOfElements": 5,
+        "firstPage": 1,
+        "lastPage": 2
+    }
+}
+~~~
+
+
+TODO 게시글 댓글 작성, 수정, 삭제, 조회 문서 작성
   
