@@ -961,6 +961,18 @@ response example:
 }
 ~~~
 
+게시글 댓글 작성
+
+~~~
+POST http://localhost:8080/community/post/comment
+
+Body: {
+    postId: "{게시글 id}",
+    username: "{댓글을 등록할 사용자 이름}",
+    password: "{댓글을 수정/삭제할 password}",
+    comment: "{댓글 내용}"     
+}
+~~~
 
 TODO 게시글 댓글 작성, 수정, 삭제, 조회 문서 작성
   
