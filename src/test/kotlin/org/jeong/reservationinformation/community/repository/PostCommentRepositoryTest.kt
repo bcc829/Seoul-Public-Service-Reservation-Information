@@ -23,7 +23,7 @@ class PostCommentRepositoryTest {
                 PostComment(
                         postId = "testPost",
                         password = "test",
-                        userName = "tester",
+                        username = "tester",
                         comment = "test comment"
                 )
         ).block()
@@ -32,7 +32,7 @@ class PostCommentRepositoryTest {
                 PostComment(
                         postId = "testPost",
                         password = "test",
-                        userName = "테스터",
+                        username = "테스터",
                         comment = "테스트 댓글"
                 )
         ).block()
@@ -41,7 +41,7 @@ class PostCommentRepositoryTest {
                 PostComment(
                         postId = "testPost",
                         password = "test",
-                        userName = "테스터2",
+                        username = "테스터2",
                         comment = "댓글"
                 )
         ).block()
@@ -56,9 +56,9 @@ class PostCommentRepositoryTest {
 
         StepVerifier
                 .create(data)
-                .expectNextMatches { it.userName == "테스터2" }
-                .expectNextMatches { it.userName == "테스터" }
-                .expectNextMatches { it.userName == "tester" }
+                .expectNextMatches { it.username == "테스터2" }
+                .expectNextMatches { it.username == "테스터" }
+                .expectNextMatches { it.username == "tester" }
                 .verifyComplete()
     }
 

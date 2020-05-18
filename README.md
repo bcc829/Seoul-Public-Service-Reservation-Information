@@ -974,5 +974,29 @@ Body: {
 }
 ~~~
 
+request example: 
+~~~
+http://localhost:8080/community/post/comment
+
+Body: {
+    "postId": "5eb9eac3ade7d537db018f37",
+    "username": "테스터",
+    "password": "123456",
+    "comment": "테스트 댓글"
+}
+~~~
+
+response example:
+
+~~~
+{
+    "id": "5ec20880dd032d1d2cfed69c",
+    "userName": "테스터",
+    "comment": "테스트 댓글",
+    "registerDate": "2020-05-18T04:01:04.237+0000",
+    "updateDate": "2020-05-18T04:01:04.237+0000"
+}
+~~~
+
 TODO 게시글 댓글 작성, 수정, 삭제, 조회 문서 작성
   

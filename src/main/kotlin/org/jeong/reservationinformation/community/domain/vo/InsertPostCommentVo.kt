@@ -4,14 +4,14 @@ import org.jeong.reservationinformation.community.domain.document.PostComment
 
 data class InsertPostCommentVo(
         val postId: String,
-        val userName: String,
+        val username: String,
         val password: String,
         val comment: String
 ) {
     fun toPostComment(): PostComment {
         return PostComment(
                 postId = postId,
-                userName = userName,
+                username = username,
                 comment = comment,
                 password = password
         )

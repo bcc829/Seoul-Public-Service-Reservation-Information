@@ -29,7 +29,7 @@ class PostCommentCrudServiceTest {
                 PostComment(
                         postId = "testPost",
                         password = "test",
-                        userName = "tester",
+                        username = "tester",
                         comment = "test comment"
                 )
         ).block()
@@ -38,7 +38,7 @@ class PostCommentCrudServiceTest {
                 PostComment(
                         postId = "testPost",
                         password = "test",
-                        userName = "테스터",
+                        username = "테스터",
                         comment = "테스트 댓글"
                 )
         ).block()
@@ -47,7 +47,7 @@ class PostCommentCrudServiceTest {
                 PostComment(
                         postId = "testPost",
                         password = "test",
-                        userName = "테스터2",
+                        username = "테스터2",
                         comment = "댓글"
                 )
         ).block()
@@ -60,7 +60,7 @@ class PostCommentCrudServiceTest {
                 insertPostCommentVo = InsertPostCommentVo(
                         postId = "testPost",
                         password = "test",
-                        userName = "Junit",
+                        username = "Junit",
                         comment = "junit test"
                 )
         ).block()
@@ -79,7 +79,7 @@ class PostCommentCrudServiceTest {
                 insertPostCommentVo = InsertPostCommentVo(
                         postId = "testPost",
                         password = "test",
-                        userName = "Junit",
+                        username = "Junit",
                         comment = "junit test"
                 )
         ).block()!!
@@ -106,7 +106,7 @@ class PostCommentCrudServiceTest {
                 PostComment(
                         postId = "testPost",
                         password = "test",
-                        userName = "테스터3",
+                        username = "테스터3",
                         comment = "댓글"
                 )
         ).block()!!

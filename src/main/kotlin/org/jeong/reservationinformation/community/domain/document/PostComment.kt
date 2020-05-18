@@ -12,7 +12,7 @@ data class PostComment (
         @Id
         val id: String? = null,
         val postId: String,
-        val userName: String,
+        val username: String,
         val password: String,
         var comment: String,
         @CreatedDate
@@ -22,7 +22,7 @@ data class PostComment (
 ) {
         fun toPostCommentVo(): PostCommentVo {
                 return PostCommentVo(id = this.id!!,
-                        userName = this.userName,
+                        userName = this.username,
                         comment = this.comment,
                         registerDate = this.registerDate!!,
                         updateDate = this.updateDate!!)
