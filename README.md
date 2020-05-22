@@ -19,13 +19,15 @@ api:
 
 체육 시설 예약 목록 조회
 ~~~
-http://localhost:8080/sport/reservations?size=한번에 조회할 데이터 크기&page=조회할 페이지&category={ALL, SOCCER_STADIUM, FUTSAL_STADIUM,
+GET http://localhost:8080/sport/reservations?size=한번에 조회할 데이터 크기&page=조회할 페이지&category={ALL, SOCCER_STADIUM, FUTSAL_STADIUM,
 TENNIS_COURT, FOOTBALL_COURT, BASKETBALL_COURT, MULTIPURPOSE_STADIUM, VOLLEYBALL_COURT, BADMINTON_COURT, FUTSAL, PLAYGROUND, GYM, TABLE_TENNIS_COURT,
 PARK_GOLF_COURSE}
 ~~~
 request example:
 
+~~~
 GET http://localhost:8080/sport/reservations?size=2&page=1&category=ALL 
+~~~
 
 response example: 
 
@@ -101,9 +103,9 @@ GET http://localhost:8080/sport/reservation/comments?svcId={체육 시설 svcid}
 ~~~
 
 request example: 
-
-http://localhost:8080/sport/reservation/comments?svcId=S200102152019666829&size=5&page=1
-
+~~~
+GET http://localhost:8080/sport/reservation/comments?svcId=S200102152019666829&size=5&page=1
+~~~
 response example:
 ~~~
 {
@@ -258,12 +260,12 @@ response example:
 
 문화 시설 예약 목록 조회
 ~~~
-http://localhost:8080/culture/reservations?size=한번에 조회할 데이터 크기&page=조회할 페이지&category={ALL, COMPETITION, EXHIBITION, PREVIEW, PERFORMANCE, CONCERT}
+GET http://localhost:8080/culture/reservations?size=한번에 조회할 데이터 크기&page=조회할 페이지&category={ALL, COMPETITION, EXHIBITION, PREVIEW, PERFORMANCE, CONCERT}
 ~~~
 request example:
-
+~~~
 GET http://localhost:8080/culture/reservations?size=2&page=1&category=EXHIBITION 
-
+~~~
 response example: 
 ~~~
 {
@@ -341,7 +343,7 @@ GET http://localhost:8080/culture/reservation/comments?svcId={체육 시설 svci
 
 request example: 
 ~~~
-http://localhost:8080/culture/reservation/comments?svcId=S200102152019666829&size=5&page=1
+GET http://localhost:8080/culture/reservation/comments?svcId=S200102152019666829&size=5&page=1
 ~~~
 
 response example:
@@ -498,7 +500,7 @@ GET http://localhost:8080/community/post?id={게시글 id}
 
 request example: 
 ~~~
-http://localhost:8080/community/post?id=5eb9ee71ade7d537db018f3e
+GET http://localhost:8080/community/post?id=5eb9ee71ade7d537db018f3e
 ~~~
 
 response example:
@@ -531,7 +533,7 @@ body {
 
 request example: 
 ~~~
-http://localhost:8080/community/post
+POST http://localhost:8080/community/post
 body : {
             "username" : "tester",
             "password" : "123123",
@@ -570,7 +572,7 @@ body {
 
 request example: 
 ~~~
-http://localhost:8080/community/post
+PUT http://localhost:8080/community/post
 body : {
            "id": "5eb9ee71ade7d537db018f3e",
            "title": "업데이트 제목",
@@ -618,7 +620,7 @@ GET http://localhost:8080/community/posts?size=한번에 조회할 데이터 크
 
 request example: 
 ~~~
-http://localhost:8080/community/posts?size=5&page=1
+GET http://localhost:8080/community/posts?size=5&page=1
 ~~~
 
 response example:
@@ -696,7 +698,7 @@ GET http://localhost:8080/community/posts/search/category/{SOCCER, BASEBALL, BAS
 
 request example: 
 ~~~
-http://localhost:8080/community/posts/search/category/SOCCER?size=5&page=1
+GET http://localhost:8080/community/posts/search/category/SOCCER?size=5&page=1
 ~~~
 
 response example:
@@ -775,7 +777,7 @@ GET http://localhost:8080/community/posts/search/category/{SOCCER, BASEBALL, BAS
 
 request example: 
 ~~~
-http://localhost:8080/community/posts/search/category/SOCCER/content?keyword=내용&size=5&page=1
+GET http://localhost:8080/community/posts/search/category/SOCCER/content?keyword=내용&size=5&page=1
 ~~~
 
 response example:
@@ -853,7 +855,7 @@ GET http://localhost:8080/community/posts/search/category/{SOCCER, BASEBALL, BAS
 
 request example: 
 ~~~
-http://localhost:8080/community/posts/search/category/SOCCER/title?keyword=테스트%20테스트&size=5&page=1
+GET http://localhost:8080/community/posts/search/category/SOCCER/title?keyword=테스트%20테스트&size=5&page=1
 ~~~
 
 response example:
@@ -891,7 +893,7 @@ GET http://localhost:8080/community/posts/search/category/{SOCCER, BASEBALL, BAS
 
 request example: 
 ~~~
-http://localhost:8080/community/posts/search/category/SOCCER/username?keyword=tester&size=5&page=1
+GET http://localhost:8080/community/posts/search/category/SOCCER/username?keyword=tester&size=5&page=1
 ~~~
 
 response example:
@@ -961,6 +963,43 @@ response example:
 }
 ~~~
 
+게시물 댓글 조회
+~~~
+GET http://localhost:8080/community/post/comments?size=한번에 조회할 데이터 크기&page=페이지 번호&postId=게시글 id
+~~~
+
+request example: 
+
+~~~
+GET http://localhost:8080/community/post/comments?size=10&page=1&postId=5eb9eac3ade7d537db018f37
+~~~
+
+response example: 
+
+~~~
+{
+    "content": [
+        {
+            "id": "5ec20880dd032d1d2cfed69c",
+            "userName": "테스터",
+            "comment": "테스트 댓글",
+            "registerDate": "2020-05-18T04:01:04.237+0000",
+            "updateDate": "2020-05-18T04:01:04.237+0000"
+        }
+    ],
+    "pageInfo": {
+        "totalCount": 1,
+        "hasNext": false,
+        "isLast": false,
+        "isFirst": true,
+        "numberOfElements": 1,
+        "firstPage": 1,
+        "lastPage": 1
+    }
+}
+~~~
+
+
 게시글 댓글 작성
 
 ~~~
@@ -976,7 +1015,7 @@ Body: {
 
 request example: 
 ~~~
-http://localhost:8080/community/post/comment
+POST http://localhost:8080/community/post/comment
 
 Body: {
     "postId": "5eb9eac3ade7d537db018f37",
@@ -998,5 +1037,52 @@ response example:
 }
 ~~~
 
-TODO 게시글 댓글 작성, 수정, 삭제, 조회 문서 작성
+게시글 댓글 수정
+
+~~~
+PUT http://localhost:8080/community/post/comment
+
+Body: {
+    id: "{댓글 id}",
+    password: "{댓글을 수정/삭제할 password}",
+    comment: "{업데이트 할 댓글 내용}"     
+}
+~~~
+
+request example: 
+~~~
+PUT http://localhost:8080/community/post/comment
+
+Body: {
+    "id": "5ec20880dd032d1d2cfed69c",
+    "password": "123456",
+    "comment": "테스트 update 댓글"
+}
+~~~
+
+response example: 
+~~~
+{
+    "id": "5ec20880dd032d1d2cfed69c",
+    "password": "123456",
+    "comment": "테스트 update 댓글"
+}
+~~~
+
+게시글 댓글 삭제
+~~~
+DELETE http://localhost:8080/community/post/comment?password={게시글 등록 후 수정/삭제를 위한 password}&id={id}
+~~~
+
+request example: 
+
+~~~
+DELETE http://localhost:8080/community/post/comment?password=123456&id=5eb9eac3ade7d537db018f37
+~~~
+
+response example: 
+~~~
+200 OK
+~~~
+
   

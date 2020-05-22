@@ -20,7 +20,7 @@ class PostCommentHandler(val postCommentCrudService: PostCommentCrudService, val
     fun insertPostComment(request: ServerRequest): Mono<ServerResponse> =
             request.bodyToMono(InsertPostCommentVo::class.java)
                     .flatMap {
-                        ServerResponse.ok()
+                        ok()
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .body(postCommentCrudService.insertPostComment(it), PostCommentVo::class.java)
                     }.switchIfEmpty(Mono.error(InvalidParameterException("request body is not exist")))
@@ -28,8 +28,7 @@ class PostCommentHandler(val postCommentCrudService: PostCommentCrudService, val
     fun updatePostComment(request: ServerRequest): Mono<ServerResponse> =
             request.bodyToMono(UpdatePostCommentVo::class.java)
                     .flatMap {
-                        ServerResponse
-                                .ok()
+                        ok()
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .body(postCommentCrudService.updatePostComment(it), PostCommentVo::class.java)
                     }.switchIfEmpty(Mono.error(InvalidParameterException("request body is not exist")))
@@ -44,7 +43,7 @@ class PostCommentHandler(val postCommentCrudService: PostCommentCrudService, val
                                     .orElseThrow { IllegalArgumentException("password is not exist") }
                     ), Void::class.java)
 
-    fun findPostCommentWithPaging(request: ServerRequest): Mono<ServerResponse> =
+    fun findPostCommentsWithPaging(request: ServerRequest): Mono<ServerResponse> =
             ok()
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(

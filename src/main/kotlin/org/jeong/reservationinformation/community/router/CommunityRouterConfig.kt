@@ -39,12 +39,12 @@ class CommunityRouterConfig(val postCrudHandler: PostCrudHandler,
 
     @Bean
     fun postCommentCrudRouter() =
-            RouterFunctions.nest(RequestPredicates.path("/community/post/comment"), router {
+            RouterFunctions.nest(RequestPredicates.path("/community/post"), router {
                 listOf(
-                        GET("", postCommentHandler::findPostCommentWithPaging),
-                        POST("", postCommentHandler::insertPostComment),
-                        PUT("", postCommentHandler::updatePostComment),
-                        DELETE("", postCommentHandler::deletePostComment)
+                        GET("/comments", postCommentHandler::findPostCommentsWithPaging),
+                        POST("/comment", postCommentHandler::insertPostComment),
+                        PUT("/comment", postCommentHandler::updatePostComment),
+                        DELETE("/comment", postCommentHandler::deletePostComment)
                 )
             })
 }
