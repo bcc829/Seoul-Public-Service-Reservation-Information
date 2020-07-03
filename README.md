@@ -15,6 +15,9 @@ https://data.seoul.go.kr 에서 api key를 발급 받으신 후 실행 시 환�
 api:
   key: {발급 받은 키}
 ~~~
+
+*주의: application.yml에 발급 받은 키를 넣는 경우 해당 key를 노출시키지 않게 주의하세요(ex: github public repository에 api key를 넣은채로 소스를 push)*
+
 ---
 
 체육 시설 예약 목록 조회
